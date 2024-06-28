@@ -1,0 +1,8 @@
+<div class="chat-messages" #chatMessages>
+    <div *ngFor="let message of messageList" class="message-wrapper"
+        [ngClass]="{'self-message-wrapper': message.sender === sessionUser, 'other-message-wrapper': message.sender !== sessionUser}">
+        <span class="message-text">{{ message.msg }}</span>
+        <span class="delete-btn" (click)="deleteMessage(message.id)">❌</span>
+        <span class="edit-btn" (click)="editMessage(message)" >✏️</span>
+    </div>
+</div>

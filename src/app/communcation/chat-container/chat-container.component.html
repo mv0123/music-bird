@@ -1,0 +1,8 @@
+<button class="reset-button" (click)="resetChat()">Reset Chat</button>
+<h4>{{ sessionUser }}</h4>
+<div class="chat-box">
+  <app-chat-messages [messageList]="messageList" [sessionUser]="sessionUser"></app-chat-messages>
+  <app-message-input (sendMessage)="sendMessage($event)"></app-message-input>
+</div>
+
+

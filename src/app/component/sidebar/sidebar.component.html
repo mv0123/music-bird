@@ -1,0 +1,64 @@
+<aside class="sidebar h-full padding">
+    <nav>
+      <h1 class="span">BROWSE</h1>
+      <ul>
+        <li><a routerLink="/newReleases" (click)="navigate('/newReleases')">Releases</a></li>
+        <li><a routerLink="/topCharts" (click)="navigate('/topCharts')">Top Charts</a></li>
+        <li><a routerLink="/topPlaylists" (click)="navigate('/topPlaylists')">Top Playlists</a></li>
+        <li><a routerLink="/podCasts" (click)="navigate('/podCasts')">Top Trending</a></li>
+        <li><a routerLink="/topArtists" (click)="navigate('/topArtists')">Top Artists </a> </li>
+        <li>Radio</li>
+      </ul>
+      <h1 class="span">LIBRARY</h1>
+      <ul>
+        <li><button (click)="sendEvent()" style="border:none;"><i class="fas fa-history"></i> History</button></li>
+        <li><button (click)="sendEvent()" style="border:none;"><i class="fas fa-heart"></i> Liked Songs</button></li>
+        <li><button (click)="sendEvent()" style="border:none;"><i class="fa-solid fa-image"></i> Albums</button></li>
+        <li><button (click)="sendEvent()" style="border:none;"><i class="fas fa-podcast"></i> Podcasts</button></li>
+        <li><button (click)="sendEvent()" style="border:none;"><i class="fas fa-users"></i> Artists</button></li>
+      </ul>
+    </nav>
+    <button class="newPlayList" type="button" (click)="sendEvent()">+ New Playlist</button>
+</aside>
+
+
+<div *ngIf="visible" class="login-popup">
+  <div class="dialog">
+    <button (click)="closeDialog()" class="close-button">&times;</button>
+    <div class="dialog-content">
+      <div class="heading">
+        <p>{{ isSignUp ? "Don't have a JioSaavn account?" : "Already have an account?"}}
+          <span class="signup-link">
+            <a (click)="toggleSignUp()" style="cursor: pointer;">
+              {{ isSignUp ? 'Sign Up' : 'Log in' }}
+            </a>
+          </span>
+        </p>
+      </div>
+      <hr>
+      <div>
+        <h1>Welcome To JioSaavn</h1>
+        <p>{{ isSignUp ? 'Log in' : 'Sign in' }} to create playlists, build your library, get personalized
+          recommendations & more!</p>
+      </div>
+      <div>
+        <input type="tel" placeholder="Enter Your Mobile Number" class="mobile-button">
+      </div>
+      <div>
+        <button class="continue-button" type="button">Continue</button>
+      </div>
+      <div>
+        <p>
+          Select ‘Continue’ to give consent to JioSaavn’s Terms
+          of Service and acknowledge that you have read and
+          understood the Privacy Policy. An SMS may be sent
+          to authenticate your account, and message and data
+          rates may apply.
+        </p>
+      </div>
+      <h4><span>OR CONNECT WITH</span></h4>
+    </div>
+    <button class="facebook-button">FaceBook</button>
+    <button class="email-button">E-mail</button>
+  </div>
+</div>

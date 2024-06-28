@@ -1,0 +1,133 @@
+.sidebar {
+  width: 170px;
+  background-color: #f2f2f2;
+  overflow-y: auto;
+  height: calc(100vh - 100px);
+  border-right: .5px solid rgb(180, 180, 180);
+  scrollbar-width: 2px;
+  position: fixed;
+}
+
+nav ul {
+  color: black;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(60, 57, 57);
+  font-size: 14px;
+}
+
+nav ul li {
+  padding: 8px;
+  text-decoration: none;
+  margin-left: 25px;
+  font-weight: 500;
+}
+
+.span {
+  margin-left: 20px;
+  // margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.newPlayList {
+  border-radius: 50px;
+  font-size: 12px;
+  padding: 18px;
+  margin: px 0 0 12px;
+  color: rgb(113, 189, 113);
+  border-color: lightgreen;
+  border-style: solid;
+  margin-left: 25px;
+
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.nav-link a {
+  color: white;
+  text-decoration: none;
+}
+
+.search {
+  margin: 0 10px;
+}
+
+.button {
+  margin: 0 5px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.login-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dialog {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  position: relative;
+  text-align: center;
+  font-size: 12px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: steelblue;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.dialog-content {
+  margin-top: 20px;
+}
+
+.heading {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.mobile-button,
+.continue-button,
+.facebook-button,
+.email-button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+  border: none;
+  background-color: #dbdddf;
+  border-radius: 12px
+}
+
+.mobile-button {
+  width: 95%;
+}
+
+.signup-link a {
+  color: blue;
+  text-decoration: underline;
+}

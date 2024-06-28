@@ -1,0 +1,9 @@
+<div class="main">
+    <h2>New Releases</h2>
+      <div class="card-cnt">
+        <div *ngFor="let album of data.albums" class="card" (click)="dynamicNavigation(album)" >
+          <img [src]="album.image[1].link">
+          <p>{{ album.name }}</p>
+        </div>
+      </div>
+</div>

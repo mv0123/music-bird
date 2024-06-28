@@ -1,0 +1,12 @@
+.router-cnt{
+    flex: 1;
+    background-color: #f2f2f2;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    margin-left: 170px;
+    padding: 30px;
+}
+
+.calcuated-height{
+    height: calc(100vh - 121px);
+}

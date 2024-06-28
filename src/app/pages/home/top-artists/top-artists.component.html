@@ -1,0 +1,11 @@
+<div *ngIf="artist">
+  <h2>{{ artist.name }}</h2>
+  <img [src]="artist.image" alt="{{ artist.name }}" style="width: 150px;">
+  <h4>Top Songs</h4>
+  <ul>
+    <li *ngFor="let song of artist.topSongs">{{ song.title }}</li>
+  </ul>
+</div>
+<h2>
+  helo
+</h2>

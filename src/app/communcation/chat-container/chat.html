@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat Application</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+  }
+
+  .chat-box {
+    background-color: #eff7ff;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    margin: auto;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .reset-button {
+    background-color: #dc3545;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+
+  .chat-messages {
+    padding: 20px;
+    overflow-y: scroll;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .message-wrapper {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .self-message-wrapper {
+    align-self: flex-end;
+    background-color: #dcf8c6;
+  }
+
+  .other-message-wrapper {
+    align-self: flex-start;
+    background-color: #f3f3f3;
+  }
+
+  .message-text {
+    word-wrap: break-word;
+  }
+
+  .delete-btn,
+  .edit-btn {
+    top: 5px;
+    right: 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .chat-input {
+    width: calc(100% - 80px); /* considering button width */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 100px;
+  }
+
+  .chat-submit {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0px 16px;
+    border-radius: 6px;
+  }
+</style>
+</head>
+<body>
+<div class="chat-box">
+  <h4 id="sessionUser"></h4>
+  <div class="chat-messages" id="chatMessages">
+  </div>
+  <div style="display: flex; gap: 10px; padding: 6px;">
+    <input type="text" class="chat-input" id="messageInput" placeholder="Type a message...">
+    <button class="chat-submit" onclick="sendMessage()">Send</button>
+  </div>
+</div>
+<button class="reset-button" onclick="resetChat()">Reset Chat</button>
+
+<script>
+  function resetChat() {
+    localStorage.removeItem('chatMessages');
+    document.getElementById('chatMessages').innerHTML = '';
+  }
+
+  function sendMessage() {
+    var messageInput = document.getElementById('messageInput');
+    var message = messageInput.value.trim();
+    if (message !== "") {
+      var sessionUser = document.getElementById('sessionUser').textContent.trim();
+      var chatMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+      var newChat = {
+        id: new Date().getTime(),
+        msg: message,
+        sender: sessionUser
+      };
+      chatMessages.push(newChat);
+      localStorage.setItem('chatMessages', JSON.stringify(chatMessages));
+      renderChat();
+      messageInput.value = '';
+    }
+  }
+
+  function deleteMessage(messageID) {
+    var chatMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+    chatMessages = chatMessages.filter(function(chat) {
+      return chat.id !== messageID;
+    });
+    localStorage.setItem('chatMessages', JSON.stringify(chatMessages));
+    renderChat();
+  }
+
+  function editMessage(message) {
+    var newText = prompt("Enter new message:", message.msg);
+    if (newText !== null && newText.trim() !== "") {
+      message.msg = newText;
+      var chatMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+      localStorage.setItem('chatMessages', JSON.stringify(chatMessages));
+      renderChat();
+    }
+  }
+
+  function renderChat() {
+    var sessionUser = document.getElementById('sessionUser').textContent.trim();
+    var chatMessages = JSON.parse(localStorage.getItem('chatMessages')) || [];
+    var chatMessagesContainer = document.getElementById('chatMessages');
+    chatMessagesContainer.innerHTML = '';
+    chatMessages.forEach(function(message) {
+      var messageWrapper = document.createElement('div');
+      messageWrapper.classList.add('message-wrapper');
+      if (message.sender === sessionUser) {
+        messageWrapper.classList.add('self-message-wrapper');
+      } else {
+        messageWrapper.classList.add('other-message-wrapper');
+      }
+      messageWrapper.innerHTML = '<span class="message-text">' + message.msg + '</span>' +
+                                 '<span class="delete-btn" onclick="deleteMessage(' + message.id + ')">❌</span>' +
+                                 '<span class="edit-btn" onclick="editMessage(' + JSON.stringify(message) + ')">✏️</span>';
+      chatMessagesContainer.appendChild(messageWrapper);
+    });
+    scrollToBottom();
+  }
+
+  function scrollToBottom() {
+    var chatMessagesContainer = document.getElementById('chatMessages');
+    chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+  }
+
+  function initializeChat() {
+    var sessionUser = prompt("Enter your name") || "";
+    document.getElementById('sessionUser').textContent = sessionUser;
+    renderChat();
+  }
+
+  window.onload = initializeChat;
+</script>
+</body>
+</html>

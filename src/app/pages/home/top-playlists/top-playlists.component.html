@@ -1,0 +1,9 @@
+<div class="main"> 
+    <h2>Top Playlists</h2>
+    <div class="card-cnt">
+      <div *ngFor="let playlist of data.playlists" class="card" (click)="navigateToPlaylist(playlist.id)">
+        <img [src]="playlist.image[0].link" style="width: 150px;">
+        <h4>{{ playlist.title }}</h4>
+      </div>
+    </div>
+  </div>

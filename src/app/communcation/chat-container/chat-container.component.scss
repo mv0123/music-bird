@@ -1,0 +1,25 @@
+/* chat.component.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.chat-box {
+    background-color: #eff7ff;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 40%;
+}
+
+.reset-button {
+    background-color: #dc3545;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}

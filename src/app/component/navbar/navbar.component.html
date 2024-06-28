@@ -1,0 +1,31 @@
+<header class="navbar">
+  <div class="between">
+    <nav class="d-flex space-between align-center">
+      <div class="left-content">
+        <a routerLink="/" class="nav-link">
+          <img src="/assets/logo-gif.gif" alt="Logo" height="60px" class="img">
+        </a>
+        <ul class="nav-links">
+          <li class="nav-link">
+            <a>Music</a>
+          </li>
+          <li class="nav-link">
+            <a>Podcasts</a>
+          </li>
+          <li class="nav-link">
+            <a>GO Pro</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="search-container">
+        <input type="text" placeholder="Search.." style="border: none;font-size: 18px;">
+      </div>
+
+      <div>
+        <button class="button" (click)="navigateToLogin(false)">Log In</button>
+        <button class="button" (click)="navigateToLogin(true)">Sign Up</button>
+      </div>
+    </nav>
+  </div>
+</header>

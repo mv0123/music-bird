@@ -1,0 +1,142 @@
+.full-screen-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(245, 245, 245);
+}
+
+.left-side, .right-side {
+  width: 50%;
+  display: flex;
+}
+
+.right-side {
+  background-color: rgb(102,82,209);
+  align-items: center;
+  justify-content: center;
+
+}
+
+.photo {
+  max-width: 100%;
+  height: auto;
+}
+
+.dialog {
+  background-color:rgb(234, 234, 242);
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 70%;
+  height: 60%;
+}
+
+.dialog-content {
+  text-align: center;
+  font-size: 16px;
+}
+
+.signup-link a {
+  color: #007bff;
+  cursor: pointer;
+}
+
+.button, .mobile-input, .back-button {
+  border-radius: 40px;
+  font-size: 16px;
+  padding: 12px 0;
+  width: 50%;
+  margin-top: 15px;
+  border: none;
+  outline: none;
+  text-align: center;
+  margin: auto;
+  display: block;
+  cursor: pointer;
+}
+
+.button {
+  transition: background-color 0.3s;
+}
+
+.continue-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.continue-button:hover {
+  background-color: #0056b3;
+}
+
+.facebook-button {
+  background-color: #3b5998;
+  color: white;
+}
+
+.facebook-button:hover {
+  background-color: #2d4373;
+}
+
+.email-button {
+  background-color: #db4437;
+  color: white;
+}
+
+.email-button:hover {
+  background-color: #b3372a;
+}
+
+.back-button {
+  background-color: #6c757d;
+  color: white;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: auto;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
+
+.mobile-input {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.heading {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+h4 {
+  text-align: center;
+  margin-top: 25px;
+}
+
+h4 span {
+  background: white;
+  padding: 0 8px;
+}
+
+@media screen and (max-width: 600px) {
+  .full-screen-container {
+    flex-direction: column;
+  }
+
+  .left-side, .right-side {
+    width: 100%;
+  }
+
+  .right-side {
+    display: none;
+  }
+
+  .dialog {
+    width: 90%;
+    padding: 10px;
+  }
+}

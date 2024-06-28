@@ -1,0 +1,11 @@
+.card-cnt{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+   }
+
+   .main{
+    margin-left: 50px;
+   }
+   .card:hover {
+    transform: scale(1.07);
+}

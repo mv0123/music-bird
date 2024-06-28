@@ -1,0 +1,20 @@
+<div class="playlist-container" *ngIf="playlist">
+  <div class="playlist-header">
+    <img [src]="playlist.image[0].link" class="playlist-cover" alt="Playlist Cover">
+    <div class="playlist-info">
+      <h2>{{ playlist.title }}</h2>
+      <h2>{{ playlist.name }}</h2>
+      <p>{{ playlist.description }}</p>
+    </div>
+  </div>
+  <div class="songs-list">
+    <div class="song-card" *ngFor="let song of playlist.songs" (click)="playSong(song)">
+      <img [src]="song.image[2].link" class="song-cover" alt="Song Cover">
+      <div class="song-info">
+        <p>{{ song.name }}</p>
+        <small>{{ song.artist }}</small>
+      </div>
+    </div>
+  </div>
+  
+</div>

@@ -1,0 +1,91 @@
+.navbar {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-link {
+  position: relative;
+  margin: 0 15px;
+}
+
+.nav-link a {
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+  padding: 10px 15px;
+  display: block;
+}
+
+a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #3E3E3E;
+    font-weight: 500;
+
+}
+
+.search-container {
+    padding: 9px;
+    border-radius: 50px;
+    font-size: 16px;
+    text-align: center;
+    width: 30%;
+    margin: auto;
+    border: .5px solid lightgray;
+    color: #2a2d36;
+}
+
+  .d-flex {
+    display: flex;
+  }
+  
+  .space-between {
+    justify-content: space-between;
+  }
+  
+  .align-center {
+    align-items: center;
+  }
+  
+  .left-content {
+    display: flex;
+    align-items: center;
+  }
+
+  .mobile-button,
+  .continue-button,
+  .facebook-button,
+  .email-button {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .signup-link a {
+    color: blue;
+    text-decoration: underline;
+  }
+  
+  .button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 1s;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  

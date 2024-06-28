@@ -1,0 +1,21 @@
+<aside id="player" class="player-cnt">
+  <div class="progress-container">
+    <div class="progress-bar" #progressBar></div>
+  </div>
+  <div class="equel-section" style="display: flex;">
+    <img *ngIf="song.image" [src]="song.image[0].link" alt="">
+    <div>
+      <b>{{ song.name }}</b>
+      <br>
+      <span>{{ song.label }}</span>
+    </div>
+  </div>
+  <div class="player-action">
+    <audio #audioPlayer autoplay controls preload="auto" [src]="song.downloadUrl ? song.downloadUrl[2].link : ''" (timeupdate)="updateProgress()">
+    </audio>
+  </div>
+  <div class="equel-section">
+    <button (click)="previousSong()">Back</button>
+    <button (click)="nextSong()">Next</button>
+  </div>
+</aside>

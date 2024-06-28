@@ -1,0 +1,25 @@
+<main>
+  <app-navbar class="sticky-top"></app-navbar>
+
+  <section class="d-flex calculated-height">
+    <app-sidebar></app-sidebar>
+    <div class="router-cnt padding">
+      <nav mat-tab-nav-bar *ngIf="!isHomePage">
+        <span *ngFor="let link of links">
+          <a mat-tab-link
+             [routerLink]="link.link"
+             (click)="setActiveLink(link.link)"
+             [active]="activeLink === link.link"> 
+             {{link.label}} 
+          </a>
+        </span>
+      </nav>
+      <mat-tab-nav-panel>
+        <router-outlet></router-outlet>
+      </mat-tab-nav-panel>
+
+      <app-footer></app-footer>
+    </div>
+  </section>
+  <app-player></app-player>
+</main>
