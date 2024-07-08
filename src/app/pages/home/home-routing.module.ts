@@ -20,17 +20,17 @@ const routes: Routes = [
       { path: "", component: DashboardComponent },
       { path: "newReleases", component: NewReleasesComponent },
       { path: "topCharts", component: TopChartsComponent },
-        { path: "topPlaylists", component: TopPlaylistsComponent },
-        { path: "podCasts", component: PodcastsComponent },
-        { path: "topArtists", component: TopArtistsComponent },
-        { path: "radio", component: RadioComponent },
-        { path: 'playlists/:id', component: PlaylistsComponent },
-        { path: 'album/:id', component: AlbumComponent },
+      { path: "topPlaylists", component: TopPlaylistsComponent },
+      { path: "podCasts", component: PodcastsComponent },
+      { path: "topArtists", component: TopArtistsComponent },
+      { path: "radio", component: RadioComponent },
+      { path: 'playlists/:id', component: PlaylistsComponent },
+      { path: 'album/:id', component: AlbumComponent },
     ]
   },
   { path: "login", component: LoginComponent },
- 
-  
+
+
 ];
 
 @NgModule({

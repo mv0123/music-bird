@@ -1,11 +1,28 @@
-.card-cnt{
+.card-cnt {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-   }
+    grid-template-columns: repeat(6, 1fr);
+    gap: 26px;
+}
 
-   .main{
-    margin-left: 50px;
-   }
-   .card:hover {
+.main {
+    background-color: #f2f2f2;
+    padding-inline: 40px;
+
+}
+
+.card:hover {
     transform: scale(1.07);
+}
+.card{
+    width: 100%;
+    text-align: center;
+    color: #3E3E3E;
+    cursor: pointer;
+
+    p{
+        margin: 6px;
+    }
+    img{
+        border-radius: 6px;
+    }
 }

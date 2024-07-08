@@ -11,6 +11,7 @@ import { EventsService } from './core/services/events.service';
 import { DialogModule } from 'primeng/dialog';
 import { TabMenuModule } from 'primeng/tabmenu';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
     BrowserAnimationsModule,
     DialogModule,
     TabMenuModule,
+    
     
   ],
 

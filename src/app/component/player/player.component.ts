@@ -16,34 +16,39 @@ interface Song {
   styleUrls: ['./player.component.scss']
 })
 export class PlayerComponent implements OnInit {
-  
-  audioPlayer: any;
-  progressBar: any;
+  @ViewChild('audioPlayer') audioPlayer!: ElementRef;
+  @ViewChild('progressBar') progressBar!: ElementRef;
+
   songs: Song[] = [];
   song: Song = {
     name: 'Select song',
-    id: ''
+    id: '',
   };
 
   constructor(private eventsService: EventsService, private apiService: JiosavanService) { }
 
   ngOnInit(): void {
     this.eventsService.subscribe('playSong', (data: any) => {
+      console.log('song::', data)
       this.getSongDetails(data.data.id);
     });
   }
-
+  
   getSongDetails(song_id: any) {
     this.apiService.getSongData(song_id).subscribe((res: any) => {
       this.songs = res.data;
+      this.song = this.songs[0]; 
       this.playSong();
     });
   }
 
+
   previousSong() {
+    // Implement previous song functionality
   }
 
   nextSong() {
+    // Implement next song functionality
   }
 
   playSong() {
@@ -51,7 +56,6 @@ export class PlayerComponent implements OnInit {
       this.audioPlayer.nativeElement.load();
       this.audioPlayer.nativeElement.play();
     }, 0);
-
   }
 
   updateProgress() {
