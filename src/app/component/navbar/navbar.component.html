@@ -18,8 +18,14 @@
         </ul>
       </div>
 
+      <!-- Search Bar -->
       <div class="search-container">
-        <input type="text" placeholder="Search.." style="border: none;font-size: 18px;">
+        <input 
+          [(ngModel)]="searchQuery" 
+          (keyup.enter)="searchSongs()" 
+          type="text" 
+          placeholder="Search for songs..." 
+          style="border: none; font-size: 18px; width: 300px; padding: 8px; border-radius: 20px;">
       </div>
 
       <div>

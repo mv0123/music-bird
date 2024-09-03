@@ -6,6 +6,7 @@
   border-right: .5px solid rgb(180, 180, 180);
   scrollbar-width: 2px;
   position: fixed;
+  margin-top: 50px;
 }
 
 nav ul {
@@ -72,62 +73,168 @@ nav ul li {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgba(0, 0, 0, 0.7);
   z-index: 1000;
 }
 
 .dialog {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 300px;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 450px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   position: relative;
   text-align: center;
-  font-size: 12px;
 }
 
 .close-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: steelblue;
+  top: 15px;
+  right: 15px;
   border: none;
-  font-size: 1.5em;
+  background: none;
+  font-size: 1.5rem;
   cursor: pointer;
+  color: #999;
+  transition: color 0.3s ease;
 }
 
-.dialog-content {
-  margin-top: 20px;
+.close-button:hover {
+  color: #333;
 }
 
 .heading {
-  font-size: 1.2em;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: #333;
 }
 
-.mobile-button,
-.continue-button,
-.facebook-button,
-.email-button {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
+.signup-link .toggle-auth-link {
+  color: #1db954;
+  font-weight: bold;
+  text-decoration: none;
   cursor: pointer;
-  border: none;
-  background-color: #dbdddf;
-  border-radius: 12px
+  margin-left: 5px;
 }
 
-.mobile-button {
-  width: 95%;
-}
-
-.signup-link a {
-  color: blue;
+.signup-link .toggle-auth-link:hover {
   text-decoration: underline;
+}
+
+.divider {
+  margin: 20px 0;
+  border: 0;
+  height: 1px;
+  background: #e0e0e0;
+}
+
+.welcome-section {
+  margin-bottom: 20px;
+}
+
+.welcome-heading {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.subtext {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.mobile-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.mobile-input:focus {
+  border-color: #1db954;
+}
+
+.button-group {
+  margin-bottom: 15px;
+}
+
+.continue-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #1db954;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.continue-button:hover {
+  background-color: #17a950;
+}
+
+.terms-text {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.terms-text a {
+  color: #1db954;
+  text-decoration: none;
+}
+
+.terms-text a:hover {
+  text-decoration: underline;
+}
+
+.connect-heading {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #666;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.social-button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+  color: #fff;
+  transition: opacity 0.3s ease;
+}
+
+.facebook-button {
+  background-color: #3b5998;
+}
+
+.email-button {
+  background-color: #d44638;
+}
+
+.social-button:hover {
+  opacity: 0.9;
 }

@@ -1,22 +1,35 @@
 <aside id="player" class="player-cnt">
+  <!-- Progress Bar -->
   <div class="progress-container">
     <div class="progress-bar" #progressBar></div>
   </div>
-  <div class="equel-section" style="display: flex;">
-    <img *ngIf="song.image" [src]="song.image[0].link" alt="">
-    <div>
-      <b>{{ song.name }}</b>
+
+  <!-- Song Details and Image -->
+  <div class="equel-section" style="display: flex; align-items: center;">
+    <img *ngIf="song.image && song.image.length" [src]="song.image[0]?.link" alt="Song Image" class="song-image">
+    <div class="song-details">
+      <b>{{ song.name || 'No song selected' }}</b>
       <br>
-      <span>{{ song.label }}</span>
+      <span>{{ song.label || 'Unknown label' }}</span>
     </div>
   </div>
+
+  <!-- Audio Player -->
   <div class="player-action">
-    <audio #audioPlayer autoplay controls preload="auto" [src]="song.downloadUrl ? song.downloadUrl[2].link : ''" (timeupdate)="updateProgress()">
+    <audio 
+      #audioPlayer 
+      autoplay 
+      controls 
+      preload="auto" 
+      [src]="song.downloadUrl?.[2]?.link || ''" 
+      (ended)="playNextSong()" 
+      (timeupdate)="updateProgress()">
     </audio>
   </div>
-  <div class="equel-section">
-    <button (click)="previousSong()">Back</button>
-    <button (click)="nextSong()">Next</button>
+
+  <!-- Player Controls -->
+  <div class="equel-section player-controls">
+    <button (click)="previousSong()" [disabled]="!currentSongId">Back</button>
+    <button (click)="playNextSong()" [disabled]="!currentSongId">Next</button>
   </div>
 </aside>
-

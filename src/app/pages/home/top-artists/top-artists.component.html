@@ -1,11 +1,21 @@
-<div *ngIf="artist">
+<!-- <div *ngIf="artist">
   <h2>{{ artist.name }}</h2>
   <img [src]="artist.image" alt="{{ artist.name }}" style="width: 150px;">
   <h4>Top Songs</h4>
   <ul>
     <li *ngFor="let song of artist.topSongs">{{ song.title }}</li>
   </ul>
+</div> -->
+
+
+<div class="main">
+  <h2>Top Artists</h2>
+  <div class="card-cnt">
+    <div *ngFor="let song of data.trending.songs" class="card" (click)="playSong(song)">
+      <img [src]="song.image[1].link">
+      <p>{{ song.name }}</p>
+      
+    </div>
+  </div>
+
 </div>
-<h2>
-  helo
-</h2>

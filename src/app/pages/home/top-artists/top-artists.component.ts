@@ -9,19 +9,37 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './top-artists.component.scss'
 })
 export class TopArtistsComponent implements OnInit {
-  artist: any;
+//   artist: any;
 
-  constructor(
-    private route: ActivatedRoute,
-    private apiService: JiosavanService
-  ) { }
+//   constructor(
+//     private route: ActivatedRoute,
+//     private apiService: JiosavanService
+//   ) { }
 
-  ngOnInit(): void {
-    const artistId = this.route.snapshot.paramMap.get('id');
-    if (artistId) {
-      this.apiService.getArtistData(artistId).subscribe((res: any) => {
-        this.artist = res;
-      });
-    }
-  }
+//   ngOnInit(): void {
+//     const artistId = this.route.snapshot.paramMap.get('id');
+//     if (artistId) {
+//       this.apiService.getArtistData(artistId).subscribe((res: any) => {
+//         this.artist = res;
+//       });
+//     }
+//   }
+// }
+
+data = {
+  trending: { songs: [] as any[] },
+};
+constructor(private eventsService: EventsService, private apiService: JiosavanService, private router: Router){ } 
+
+
+ngOnInit(): void {
+this.apiService.getDashboardData().subscribe((res: any) => {
+  console.log('RES:::', res);
+  this.data = res.data;
+});
+}
+
+playSong(args: any) {
+this.eventsService.publish('playSong', { data: args });
+}
 }

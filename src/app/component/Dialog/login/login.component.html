@@ -1,44 +1,31 @@
 <div class="full-screen-container">
-  <div class="left-side">
-    <img src="/assets/logo.png" alt="Photo" class="photo">
-  </div>
+  <!-- <div class="left-side">
+    <img src="/assets/logo.png" alt="Logo" class="photo">
+  </div> -->
   <div class="right-side">
     <div class="dialog">
       <button class="back-button" (click)="navigateBack()">← Back</button>
       <div class="dialog-content">
-        <div class="heading">
-          <p>{{ isSignUp ? "Don't have a JioSaavn account?" : "Already have an account?"}} 
-            <span class="signup-link">
-              <a (click)="toggleSignUp()" style="cursor: pointer;">
-                {{ isSignUp ? 'Sign Up' : 'Log in' }}
-              </a>
-            </span>
-          </p>
-        </div>
-        <hr>
-        <div>
-          <h1>Welcome To JioSaavn</h1>
-          <p>{{ isSignUp ? 'Log in' : 'Sign in' }} to create playlists, build your library, get personalized recommendations & more!</p>
-        </div>
-        <div>
+        <h1 class="welcome-heading">Welcome to JioSaavn</h1>
+        <p class="sub-heading">{{ isSignUp ? 'Sign Up' : 'Log in' }} to access your music world!</p>
+        <div class="input-container">
           <input type="tel" placeholder="Enter Your Mobile Number" class="mobile-input">
-        </div>
-        <div>
           <button class="continue-button" type="button">Continue</button>
         </div>
-        <div>
-          <span>
-            Select ‘Continue’ to give consent to JioSaavn’s Terms
-            of Service and acknowledge that you have read and
-            understood the Privacy Policy. An SMS may be sent
-            to authenticate your account, and message and data
-            rates may apply.
-          </span>
+        <div class="terms">
+          <p>Select ‘Continue’ to agree to our <a href="#">Terms of Service</a> and acknowledge our <a href="#">Privacy
+              Policy</a>. Message and data rates may apply.</p>
         </div>
-        <h4><span>OR CONNECT WITH</span></h4>
+        <h4 class="connect-heading"><span>OR CONNECT WITH</span></h4>
+        <div class="social-buttons">
+          <button class="social-button facebook-button">Facebook</button>
+          <button class="social-button google-button">Google</button>
+        </div>
+        <p class="toggle-link">
+          {{ isSignUp ? "Already have an account?" : "Don't have an account?" }}
+          <a (click)="toggleSignUp()" class="toggle-link-text">{{ isSignUp ? 'Log In' : 'Sign Up' }}</a>
+        </p>
       </div>
-      <button class="facebook-button">Facebook</button>
-      <button class="email-button">Email</button>
     </div>
   </div>
 </div>

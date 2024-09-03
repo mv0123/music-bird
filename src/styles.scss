@@ -84,4 +84,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .sticky-top{
   position: sticky;
   top: 0;
+  z-index: 10;
+}
+
+.mat-mdc-tab-links {
+  display: flex;
+  margin-top: 50px;
+  flex: 1 0 auto;
+  gap: 40px;
 }

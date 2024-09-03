@@ -7,7 +7,7 @@
         <li><a routerLink="/topPlaylists" (click)="navigate('/topPlaylists')">Top Playlists</a></li>
         <li><a routerLink="/podCasts" (click)="navigate('/podCasts')">Top Trending</a></li>
         <li><a routerLink="/topArtists" (click)="navigate('/topArtists')">Top Artists </a> </li>
-        <li>Radio</li>
+        <!-- <li>Radio</li> -->
       </ul>
       <h1 class="span">LIBRARY</h1>
       <ul>
@@ -21,44 +21,38 @@
     <button class="newPlayList" type="button" (click)="sendEvent()">+ New Playlist</button>
 </aside>
 
-
 <div *ngIf="visible" class="login-popup">
   <div class="dialog">
     <button (click)="closeDialog()" class="close-button">&times;</button>
     <div class="dialog-content">
       <div class="heading">
-        <p>{{ isSignUp ? "Don't have a JioSaavn account?" : "Already have an account?"}}
+        <p>{{ isSignUp ? "Don't have a JioSaavn account?" : "Already have an account?" }}
           <span class="signup-link">
-            <a (click)="toggleSignUp()" style="cursor: pointer;">
-              {{ isSignUp ? 'Sign Up' : 'Log in' }}
-            </a>
+            <a (click)="toggleSignUp()" class="toggle-auth-link">{{ isSignUp ? 'Sign Up' : 'Log in' }}</a>
           </span>
         </p>
       </div>
-      <hr>
-      <div>
-        <h1>Welcome To JioSaavn</h1>
-        <p>{{ isSignUp ? 'Log in' : 'Sign in' }} to create playlists, build your library, get personalized
-          recommendations & more!</p>
+      <hr class="divider">
+      <div class="welcome-section">
+        <h1 class="welcome-heading">Welcome To JioSaavn</h1>
+        <p class="subtext">{{ isSignUp ? 'Log in' : 'Sign in' }} to create playlists, build your library, get personalized recommendations & more!</p>
       </div>
-      <div>
-        <input type="tel" placeholder="Enter Your Mobile Number" class="mobile-button">
+      <div class="input-group">
+        <input type="tel" placeholder="Enter Your Mobile Number" class="mobile-input">
       </div>
-      <div>
+      <div class="button-group">
         <button class="continue-button" type="button">Continue</button>
       </div>
-      <div>
+      <div class="terms-text">
         <p>
-          Select ‘Continue’ to give consent to JioSaavn’s Terms
-          of Service and acknowledge that you have read and
-          understood the Privacy Policy. An SMS may be sent
-          to authenticate your account, and message and data
-          rates may apply.
+          Select ‘Continue’ to give consent to JioSaavn’s <a href="#">Terms of Service</a> and acknowledge that you have read and understood the <a href="#">Privacy Policy</a>. An SMS may be sent to authenticate your account, and message and data rates may apply.
         </p>
       </div>
-      <h4><span>OR CONNECT WITH</span></h4>
+      <h4 class="connect-heading">OR CONNECT WITH</h4>
+      <div class="social-buttons">
+        <button class="social-button facebook-button">Facebook</button>
+        <button class="social-button email-button">E-mail</button>
+      </div>
     </div>
-    <button class="facebook-button">FaceBook</button>
-    <button class="email-button">E-mail</button>
   </div>
 </div>
