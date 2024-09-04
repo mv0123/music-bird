@@ -9,37 +9,30 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './top-artists.component.scss'
 })
 export class TopArtistsComponent implements OnInit {
-//   artist: any;
+  data = {
+    albums: [] as any[],
+   };
 
-//   constructor(
-//     private route: ActivatedRoute,
-//     private apiService: JiosavanService
-//   ) { }
+  constructor(private eventsService: EventsService, private apiService: JiosavanService, private router: Router) { }
 
-//   ngOnInit(): void {
-//     const artistId = this.route.snapshot.paramMap.get('id');
-//     if (artistId) {
-//       this.apiService.getArtistData(artistId).subscribe((res: any) => {
-//         this.artist = res;
-//       });
-//     }
-//   }
-// }
+  ngOnInit(): void {
+    this.apiService.getDashboardData().subscribe((res: any) => {
+      console.log('RES:::', res);
+      this.data = res.data;
+    });
+  }
+  dynamicNavigation(item: any) {
+    switch (item.type) {
+      case 'album':
+        this.router.navigate(['/album', item.id]);
+        break;
+      case 'song':
+        this.eventsService.publish('playSong', { data: item });
 
-data = {
-  trending: { songs: [] as any[] },
-};
-constructor(private eventsService: EventsService, private apiService: JiosavanService, private router: Router){ } 
+        break;
+      default: alert('Something went wrong')
+        break;
+    }
 
-
-ngOnInit(): void {
-this.apiService.getDashboardData().subscribe((res: any) => {
-  console.log('RES:::', res);
-  this.data = res.data;
-});
-}
-
-playSong(args: any) {
-this.eventsService.publish('playSong', { data: args });
-}
+  }
 }

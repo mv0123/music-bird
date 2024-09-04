@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { NewReleasesComponent } from './new-releases/new-releases.component';
 import { PodcastsComponent } from './podcasts/podcasts.component';
-import { RadioComponent } from './radio/radio.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TopArtistsComponent } from './top-artists/top-artists.component';
 import { TopPlaylistsComponent } from './top-playlists/top-playlists.component';
@@ -23,7 +22,6 @@ const routes: Routes = [
       { path: "topPlaylists", component: TopPlaylistsComponent },
       { path: "podCasts", component: PodcastsComponent },
       { path: "topArtists", component: TopArtistsComponent },
-      { path: "radio", component: RadioComponent },
       { path: 'playlists/:id', component: PlaylistsComponent },
       { path: 'album/:id', component: AlbumComponent },
     ]

@@ -1,9 +1,10 @@
 <div class="main">
-    <h2>Top Charts</h2>
-    <div class="card-cnt">
-      <div *ngFor="let chart of data.charts" class="card" (click)="navigateToPlaylist(chart.id)">
-        <img [src]="chart.image[0].link" style="width: 150px;">
-        <p>{{ chart.title }}</p>
-      </div>
+  <h2>Top Charts</h2>
+  <div class="card-cnt">
+    <div *ngFor="let chart of data.charts" class="card" (click)="navigateToPlaylist(chart.id)">
+      <img [src]="chart.image[0].link" style="width: 150px;">
+      <p>{{ chart.title }}</p>
+      <h4> {{ chart.type }} #{{chart.language}}</h4>
     </div>
+  </div>
 </div>

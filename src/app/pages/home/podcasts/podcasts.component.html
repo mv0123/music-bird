@@ -1,10 +1,11 @@
 <div class="main">
-    <h2>Trending Songs</h2>
-    <div class="card-cnt">
-      <div *ngFor="let song of data.trending.songs" class="card" (click)="playSong(song)">
-        <img [src]="song.image[1].link">
-        <p>{{ song.name }}</p>
-      </div>
-    </div>
+  <h2>Trending Songs </h2>
+  <div class="card-cnt">
+    <div *ngFor="let song of data.trending.songs" class="card" (click)="playSong(song)">
+      <img [src]="song.image[1].link">
+      <p>{{ song.name }}</p>
+      <h4>{{ song.type }} #{{song.language}}</h4>
 
+    </div>
+  </div>
 </div>
