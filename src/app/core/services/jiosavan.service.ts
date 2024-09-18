@@ -14,7 +14,7 @@ export class JiosavanService {
   constructor(private http: HttpClient) { }
 
   getDashboardData() {
-    return this.http.get(this.apiUrl + 'modules?language=hindi,haryanvi,punjabi,gujarati,rajasthani')
+    return this.http.get(this.apiUrl + 'modules?language=hindi,haryanvi,punjabi')
   }
   getPlayListData(id: string) {
     return this.http.get(`${this.apiUrl}playlists?id=${id}`);

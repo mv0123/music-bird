@@ -5,19 +5,6 @@
   color: #fff;
 }
 
-.left-side {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #282828;
-}
-
-.left-side .photo {
-  width: 80%;
-  max-width: 300px;
-}
-
 .right-side {
   flex: 1;
   display: flex;
@@ -48,19 +35,6 @@
   cursor: pointer;
 }
 
-.welcome-heading {
-  margin-bottom: 10px;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #fff;
-}
-
-.sub-heading {
-  margin-bottom: 20px;
-  font-size: 1rem;
-  color: #b3b3b3;
-}
-
 .input-container {
   display: flex;
   flex-direction: column;
@@ -68,7 +42,7 @@
 }
 
 .mobile-input {
-  width: 100%;
+  width: 94%;
   padding: 12px;
   border: 1px solid #333;
   border-radius: 5px;
@@ -83,10 +57,8 @@
   background-color: #1db954;
   border: none;
   color: #fff;
-  font-size: 1rem;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
 }
 
 .continue-button:hover {
@@ -129,16 +101,6 @@
   font-size: 1rem;
   border-radius: 5px;
   transition: opacity 0.3s ease;
-}
-
-.facebook-button {
-  background-color: #3b5998;
-  color: #fff;
-}
-
-.google-button {
-  background-color: #db4437;
-  color: #fff;
 }
 
 .social-button:hover {

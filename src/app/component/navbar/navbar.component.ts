@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+navigate(arg0: string) {
+throw new Error('Method not implemented.');
+}
   searchQuery: string = '';
 
   constructor(private router: Router) {}

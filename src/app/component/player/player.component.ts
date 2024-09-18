@@ -40,8 +40,10 @@ export class PlayerComponent implements OnInit {
     this.apiService.getDashboardData().subscribe((res: any) => {
       this.data = [
         ...res.data.trending.songs,
+        ...res.data.trending.albums,
+        ...res.data.playlists,
         ...res.data.charts,
-        ...res.data.playlists
+        ...res.data.albums,
       ];
       console.log('[47] =>', this.data)
 
@@ -53,7 +55,6 @@ setTimeout(() => {
     // console.log('[52] =>', item);
     if (item.type === 'album') {
       const playlistId = item.id;
-  
       this.apiService.getAlbumData(playlistId).subscribe((res: any) => {
         const playlistData = res.data;
         console.log('[57] =>', playlistData);
