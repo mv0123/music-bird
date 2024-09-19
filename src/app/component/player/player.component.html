@@ -6,11 +6,11 @@
 
   <!-- Song Details and Image -->
   <div class="equel-section" style="display: flex; align-items: center;">
-    <img *ngIf="song.image && song.image.length" [src]="song.image[0]?.link" alt="Song Image" class="song-image">
+    <img *ngIf="lablel.image && lablel.image.length" [src]="lablel.image[0]?.link" alt="Song Image" class="song-image">
     <div class="song-details">
-      <b>{{ song.name || 'No song selected' }}</b>
+      <b>{{ lablel.name || 'No song selected' }}</b>
       <br>
-      <span>{{ song.label || 'Unknown label' }}</span>
+      <span>{{ lablel.label || 'Unknown label' }}</span>
     </div>
   </div>
 
@@ -21,11 +21,11 @@
       autoplay 
       controls 
       preload="auto" 
-      [src]="song.downloadUrl?.[2]?.link || ''" 
-      (ended)="playNextSong()" 
+      [src]="audioSrc || ''" 
+      (ended)="playNextSong()"
       (timeupdate)="updateProgress()">
     </audio>
-  </div>
+  </div>  
 
   <!-- Player Controls -->
   <div class="equel-section player-controls">
