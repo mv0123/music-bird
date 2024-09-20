@@ -6,14 +6,92 @@
           <img src="/assets/logo-gif.gif" alt="Logo" height="60px" class="img">
         </a>
         <ul class="nav-links">
-          <li class="nav-link">
+          <!-- Music dropdown -->
+          <li class="nav-link dropdown" (mouseover)="toggleDropdown('music', true)" (mouseleave)="toggleDropdown('music', false)">
             <a>Music</a>
+            <div class="dropdown-menu" [ngClass]="{'show': dropdowns['music']}">
+              <div class="dropdown-content">
+                <a routerLink="/newReleases">New Releases</a>
+                <a routerLink="/topCharts">Top Charts</a>
+                <a routerLink="/topPlaylists">Top Playlists</a>
+                <div class="nested-dropdown">
+                  <a href="javascript:void(0)">Genres</a>
+                  <div class="nested-dropdown-menu">
+                    <a href="javascript:void(0)">Pop</a>
+                    <a href="javascript:void(0)">Rock</a>
+                    <a href="javascript:void(0)">Hip-Hop</a>
+                    <a href="javascript:void(0)">Classical</a>
+                    <a href="javascript:void(0)">Jazz</a>
+                    <a href="javascript:void(0)">Country</a>
+                    <a href="javascript:void(0)">Electronic</a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
-          <li class="nav-link">
+          <!-- Podcasts dropdown -->
+          <li class="nav-link dropdown" (mouseover)="toggleDropdown('podcasts', true)" (mouseleave)="toggleDropdown('podcasts', false)">
             <a>Podcasts</a>
+            <div class="dropdown-menu" [ngClass]="{'show': dropdowns['podcasts']}">
+              <div class="dropdown-content">
+                <a routerLink="/podCasts">All Podcasts</a>
+                <div class="nested-dropdown">
+                  <a href="javascript:void(0)">Categories</a>
+                  <div class="nested-dropdown-menu">
+                    <a href="javascript:void(0)">Technology</a>
+                    <a href="javascript:void(0)">Business</a>
+                    <a href="javascript:void(0)">Health</a>
+                    <a href="javascript:void(0)">Entertainment</a>
+                    <a href="javascript:void(0)">Science</a>
+                    <a href="javascript:void(0)">Education</a>
+                    <a href="javascript:void(0)">Society</a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
-          <li class="nav-link">
-            <a>GO Pro</a>
+          <!-- GO Pro dropdown -->
+          <li class="nav-link dropdown" (mouseover)="toggleDropdown('goPro', true)" (mouseleave)="toggleDropdown('goPro', false)">
+            <a (click)="openSubscribePopup()">GO Pro</a>
+            <div class="dropdown-menu" [ngClass]="{'show': dropdowns['goPro']}">
+              <div class="dropdown-content">
+                <a (click)="openSubscribePopup()">Subscribe</a>
+                <div class="nested-dropdown">
+                  <a href="javascript:void(0)">Premium Benefits</a>
+                  <div class="nested-dropdown-menu">
+                    <a href="javascript:void(0)">Ad-Free Experience</a>
+                    <a href="javascript:void(0)">Offline Listening</a>
+                    <a href="javascript:void(0)">High-Quality Audio</a>
+                    <a href="javascript:void(0)">Exclusive Content</a>
+                    <a href="javascript:void(0)">Early Access</a>
+                    <a href="javascript:void(0)">Discounts on Merchandise</a>
+                    <a href="javascript:void(0)">Priority Support</a>
+                  </div>
+                </div>
+                <div class="nested-dropdown">
+                  <a href="javascript:void(0)">FAQ</a>
+                  <div class="nested-dropdown-menu">
+                    <a href="javascript:void(0)">General Questions</a>
+                    <a href="javascript:void(0)">Account Issues</a>
+                    <a href="javascript:void(0)">Subscription Management</a>
+                    <a href="javascript:void(0)">Payment Issues</a>
+                    <a href="javascript:void(0)">Technical Support</a>
+                    <a href="javascript:void(0)">Troubleshooting</a>
+                  </div>
+                </div>
+                <div class="nested-dropdown">
+                  <a href="javascript:void(0)">Contact Support</a>
+                  <div class="nested-dropdown-menu">
+                    <a href="javascript:void(0)">Email Support</a>
+                    <a href="javascript:void(0)">Live Chat</a>
+                    <a href="javascript:void(0)">Phone Support</a>
+                    <a href="javascript:void(0)">Submit a Ticket</a>
+                    <a href="javascript:void(0)">Support Center</a>
+                    <a href="javascript:void(0)">Feedback</a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
@@ -25,7 +103,7 @@
           (keyup.enter)="searchSongs()" 
           type="text" 
           placeholder="Search for songs..." 
-          style="border: none; font-size: 14px; width: 300px; padding: 4px; border-radius: 20px;">
+          class="search-input">
       </div>
 
       <div>
@@ -34,4 +112,6 @@
       </div>
     </nav>
   </div>
+
+  <app-subscription-popup *ngIf="showSubscribePopup" (close)="closeSubscribePopup()"></app-subscription-popup>
 </header>

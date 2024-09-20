@@ -29,7 +29,7 @@ export class PlayerComponent implements OnInit {
   currentSongId: string | null = null;
   currentIndex: number = 0;
   audioSrc: any;
-  lablel:any
+  label:any
   constructor(private eventsService: EventsService, private apiService: JiosavanService) { }
 
   ngOnInit(): void {
@@ -62,7 +62,7 @@ export class PlayerComponent implements OnInit {
         this.apiService.getPlayListData(item.id).subscribe((res: any) => {
           const playlistSongs = res.data.songs || [];
           allSongs.push(...playlistSongs);
-          console.log(`[Fetched Playlist Songs from ${item.id}] =>`, playlistSongs);
+          // console.log(`[Fetched Playlist Songs from ${item.id}] =>`, playlistSongs);
           this.checkApiCallsCompletion(--apiCalls, allSongs);
         }, (error: any) => {
           console.error('[Playlist API Error] =>', error);
@@ -73,7 +73,7 @@ export class PlayerComponent implements OnInit {
         this.apiService.getAlbumData(item.id).subscribe((res: any) => {
           const albumSongs = res.data.songs || [];
           allSongs.push(...albumSongs);
-          console.log(`[Fetched Album Songs from ${item.id}] =>`, albumSongs);
+          // console.log(`[Fetched Album Songs from ${item.id}] =>`, albumSongs);
           this.checkApiCallsCompletion(--apiCalls, allSongs);
         }, error => {
           console.error('[Album API Error] =>', error);
@@ -125,8 +125,8 @@ export class PlayerComponent implements OnInit {
     this.apiService.getSongData(song_id).subscribe((res: any) => {
       console.log('Retrieved song data:', res.data);
       if (res.data.length > 0) {
-        this.lablel = res.data[0]
-        this.song = res.data[0].downloadUrl[3];
+        this.label = res.data[0]
+        this.song = res.data[0].downloadUrl[4];
         console.log('Song URL:', this.song.link); // Log the URL
         this.playAudio();
       } else {
@@ -144,7 +144,7 @@ export class PlayerComponent implements OnInit {
   
     if (audioSrc) {
       this.audioPlayer.nativeElement.src = audioSrc;
-      this.audioPlayer.nativeElement.load();
+      // this.audioPlayer.nativeElement.load();
       console.log('Audio source set, attempting to play.');
   
       this.audioPlayer.nativeElement.play().then(() => {

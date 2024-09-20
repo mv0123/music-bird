@@ -1,0 +1,178 @@
+.subscription-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow-y: auto;
+    max-height: 80vh;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s ease;
+  }
+  
+  .close-button:hover {
+    color: #333;
+  }
+  
+  .popup-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .popup-header h2 {
+    font-size: 1.8rem;
+    margin: 0;
+  }
+  
+  .popup-header p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .subscription-details {
+    margin-bottom: 20px;
+  }
+  
+  .subscription-details h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .plans {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .plan {
+    flex: 1;
+    min-width: 200px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .plan h4 {
+    font-size: 1.2rem;
+    margin: 0 0 10px;
+  }
+  
+  .plan p {
+    font-size: 1.1rem;
+    margin: 0 0 10px;
+  }
+  
+  .plan ul {
+    padding: 0;
+    list-style: none;
+    margin: 0 0 10px;
+  }
+  
+  .plan ul li {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .plan button {
+    background-color: #1db954;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .plan button:hover {
+    background-color: #17a950;
+  }
+  
+  .popup-benefits {
+    margin-bottom: 20px;
+  }
+  
+  .popup-benefits h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .popup-benefits ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+  }
+  
+  .popup-benefits ul li {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .popup-faq {
+    margin-bottom: 20px;
+  }
+  
+  .popup-faq h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .faq-item {
+    margin-bottom: 10px;
+  }
+  
+  .faq-item h4 {
+    font-size: 1.2rem;
+    margin: 0 0 5px;
+  }
+  
+  .faq-item p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .popup-footer {
+    text-align: center;
+  }
+  
+  .footer-button {
+    background-color: #1db954;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .footer-button:hover {
+    background-color: #17a950;
+  }
+  

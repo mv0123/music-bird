@@ -10,7 +10,7 @@ import { TopChartsComponent } from './top-charts/top-charts.component';
 import { PlaylistsComponent } from './playlist/playlists/playlists.component';
 import { AlbumComponent } from './playlist/album/album.component';
 import { LoginComponent } from '../../component/Dialog/login/login.component';
-
+import { SubscriptionPopupComponent } from '../subscription-popup/subscription-popup.component';
 
 
 const routes: Routes = [

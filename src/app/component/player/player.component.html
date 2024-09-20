@@ -5,12 +5,11 @@
   </div>
 
   <!-- Song Details and Image -->
-  <div class="equel-section" style="display: flex; align-items: center;">
-    <img *ngIf="lablel.image && lablel.image.length" [src]="lablel.image[0]?.link" alt="Song Image" class="song-image">
+  <div class="equel-section song-info">
+    <img *ngIf="label?.image && label.image?.length" [src]="label?.image[0]?.link" alt="Song Image" class="song-image">
     <div class="song-details">
-      <b>{{ lablel.name || 'No song selected' }}</b>
-      <br>
-      <span>{{ lablel.label || 'Unknown label' }}</span>
+      <b>{{ label?.name || 'No song selected' }}</b>
+      <span>{{ label?.label || 'Unknown label' }}</span>
     </div>
   </div>
 

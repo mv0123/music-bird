@@ -7,10 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-navigate(arg0: string) {
-throw new Error('Method not implemented.');
-}
   searchQuery: string = '';
+  showSubscribePopup: boolean = false;
+  dropdowns: { [key: string]: boolean } = {
+    music: false,
+    podcasts: false,
+    goPro: false
+  };
 
   constructor(private router: Router) {}
 
@@ -21,7 +24,20 @@ throw new Error('Method not implemented.');
       this.router.navigate(['/search'], { queryParams: { q: this.searchQuery } });
     }
   }
+
   navigateToLogin(signUp: boolean) {
     this.router.navigate(['/login'], { queryParams: { signUp } });
+  }
+
+  openSubscribePopup() {
+    this.showSubscribePopup = true;
+  }
+
+  closeSubscribePopup() {
+    this.showSubscribePopup = false;
+  }
+
+  toggleDropdown(menu: string, show: boolean) {
+    this.dropdowns[menu] = show;
   }
 }

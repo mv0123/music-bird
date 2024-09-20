@@ -1,12 +1,13 @@
+/* General styles for sidebar */
 .sidebar {
   width: 170px;
   background-color: #f2f2f2;
   overflow-y: auto;
   height: calc(100vh - 100px);
-  border-right: .5px solid rgb(180, 180, 180);
-  scrollbar-width: 2px;
+  border-right: 1px solid #ccc;
   position: fixed;
-  margin-top: 50px;
+  margin-top: 0px; 
+  padding: 10px 0; 
 }
 
 nav ul {
@@ -18,55 +19,45 @@ nav ul {
 
 a {
   text-decoration: none;
-  color: rgb(60, 57, 57);
+  color: #3c3939; /* More readable color */
   font-size: 14px;
+  transition: color 0.2s; /* Smooth color transition */
+}
+
+a:hover {
+  color: #007bff; /* Change color on hover */
 }
 
 nav ul li {
   padding: 8px;
-  text-decoration: none;
   margin-left: 25px;
   font-weight: 500;
+  transition: background 0.2s; /* Smooth background transition */
+}
+
+nav ul li:hover {
+  background: rgba(0, 123, 255, 0.1); /* Light background on hover */
 }
 
 .span {
   margin-left: 20px;
-  // margin-top: 0px;
-  margin-bottom: 0px;
+  margin-bottom: 0;
+  font-weight: bold; /* Bold section titles */
 }
 
 .newPlayList {
   border-radius: 50px;
   font-size: 12px;
   padding: 18px;
-  margin: px 0 0 12px;
-  color: rgb(113, 189, 113);
-  border-color: lightgreen;
-  border-style: solid;
+  color: #71bd71;
+  border: 1px solid lightgreen; /* Solid border */
   margin-left: 25px;
-
+  transition: background 0.2s, color 0.2s; /* Smooth transitions */
 }
 
-.space-between {
-  justify-content: space-between;
-}
-
-.nav-link a {
-  color: white;
-  text-decoration: none;
-}
-
-.search {
-  margin: 0 10px;
-}
-
-.button {
-  margin: 0 5px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
+.newPlayList:hover {
+  background-color: lightgreen; /* Background color on hover */
+  color: white; /* Text color on hover */
 }
 
 .login-popup {

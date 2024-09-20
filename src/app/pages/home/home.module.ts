@@ -18,6 +18,7 @@ import { TopPlaylistsComponent } from './top-playlists/top-playlists.component';
 import { PlaylistsComponent } from './playlist/playlists/playlists.component';
 import { AlbumComponent } from './playlist/album/album.component';
 import { FormsModule } from '@angular/forms';
+import { SubscriptionPopupComponent } from '../subscription-popup/subscription-popup.component';
 
 
 @NgModule({
@@ -36,9 +37,9 @@ import { FormsModule } from '@angular/forms';
     TopPlaylistsComponent,
     PlaylistsComponent,
     AlbumComponent,
-        PodcastsComponent,
-
-    ],
+    PodcastsComponent,
+    SubscriptionPopupComponent
+  ],
   imports: [
     CommonModule,
     HomeRoutingModule,
