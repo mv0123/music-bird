@@ -1,20 +1,19 @@
 <div class="playlist-container" *ngIf="playlist">
-    <div class="playlist-header">
-      <img [src]="playlist.image[1].link" class="playlist-cover" alt="Playlist Cover">
-      <div class="playlist-info">
-        <h2>{{ playlist.title }}</h2>
-        <h2>{{ playlist.name }}</h2>
-        <p>{{ playlist.description }}</p>
-      </div>
+  <div class="playlist-header">
+    <img [src]="playlist.image[1].link" class="playlist-cover" alt="Playlist Cover">
+    <div class="playlist-info">
+      <h2>{{ playlist.title }}</h2>
+      <h2>{{ playlist.name }}</h2>
+      <p>{{ playlist.description }}</p>
     </div>
-    <div class="songs-list">
-      <div class="song-card" *ngFor="let song of playlist.songs; let i = index" (click)="playSong(song)">
-        <div class="song-serial">{{ i + 1 }}</div>
-        <div class="song-info">
-          <p>{{ song.name }}</p>
-          <small>{{ song.artist }}</small>
-        </div>
+  </div>
+  <div class="songs-list">
+    <div class="song-card" *ngFor="let song of playlist.songs; let i = index" (click)="playSong(song)">
+      <div class="song-serial">{{ i + 1 }}</div>
+      <div class="song-info">
+        <p>{{ song.name }}</p>
+        <small>{{ song.artist }}</small>
       </div>
     </div>
   </div>
-  
+</div>
