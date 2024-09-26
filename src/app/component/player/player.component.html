@@ -1,34 +1,41 @@
-<aside id="player" class="player-cnt">
-  <!-- Progress Bar -->
-  <div class="progress-container">
-    <div class="progress-bar" #progressBar></div>
+<aside id="musicPlayer" class="music-player">
+  <div class="progress-bar-container" (click)="onProgressClick($event)">
+    <div class="progress-bar" [style.width]="progress + '%'"></div>
   </div>
 
-  <!-- Song Details and Image -->
-  <div class="equel-section song-info">
-    <img *ngIf="label?.image && label.image?.length" [src]="label?.image[0]?.link" alt="Song Image" class="song-image">
+  <div class="player-body">
     <div class="song-details">
-      <b>{{ label?.name || 'No song selected' }}</b>
-      <span>{{ label?.label || 'Unknown label' }}</span>
+      <img *ngIf="label?.image && label.image?.length" [src]="label?.image[0]?.link" alt="Album Art" class="album-art">
+      <div class="song-info">
+        <h4>{{ label?.name || 'No Song Playing' }}</h4>
+        <p>{{ label?.label || 'Unknown Artist' }}</p>
+      </div>
+    </div>
+
+    <div class="player-controls">
+      <button (click)="previousSong()" class="control-btn" [disabled]="!currentSongId">
+        <i class="material-icons">skip_previous</i>
+      </button>
+      <button (click)="togglePlayPause()" class="control-btn"  [disabled]="!currentSongId">
+        <i class="material-icons">{{ isPlaying ? 'pause' : 'play_arrow' }}</i>
+      </button>
+      <button (click)="playNextSong()" class="control-btn" [disabled]="!currentSongId">
+        <i class="material-icons">skip_next</i>
+      </button>
+    </div>
+
+    <div class="time-info">
+      <span>{{ formatTime(currentTime) }}</span> / <span>{{ formatTime(duration) }}</span>
     </div>
   </div>
 
-  <!-- Audio Player -->
-  <div class="player-action">
-    <audio 
-      #audioPlayer 
-      autoplay 
-      controls 
-      preload="auto" 
-      [src]="audioSrc || ''" 
-      (ended)="playNextSong()"
-      (timeupdate)="updateProgress()">
-    </audio>
-  </div>  
-
-  <!-- Player Controls -->
-  <div class="equel-section player-controls">
-    <button (click)="previousSong()" [disabled]="!currentSongId">Back</button>
-    <button (click)="playNextSong()" [disabled]="!currentSongId">Next</button>
-  </div>
+  <audio 
+    #audioPlayer 
+    autoplay 
+    preload="auto" 
+    [src]="audioSrc || ''" 
+    (ended)="playNextSong()" 
+    (timeupdate)="updateProgress()"
+    (loadedmetadata)="setDuration()">
+  </audio>
 </aside>

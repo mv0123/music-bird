@@ -1,10 +1,10 @@
 .navbar {
-  background-color: #282c34;
-  color: #ffffff;
-  padding: 4px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f2f2f2;
+  color: black;
   position: relative;
   z-index: 1000;
+  border-bottom: 2px solid #ccc;
+  padding: 10px 20px; 
 }
 
 .left-content {
@@ -27,7 +27,7 @@
 }
 
 .nav-link a {
-  color: #5c9e72;
+  color: #000;
   text-decoration: none;
   padding: 10px;
   display: inline-block;
@@ -35,16 +35,10 @@
   transition: background-color 0.3s, color 0.3s;
 }
 
-.nav-link a:hover {
-  background-color: #61dafb;
-  color: #282c34;
-  border-radius: 4px;
-}
-
 .dropdown-menu {
   display: none;
   position: absolute;
-  background: #ffffff;
+  background: #fff;
   color: #282c34;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -66,7 +60,6 @@
   padding: 15px;
 }
 
-/* Nested dropdowns */
 .nested-dropdown {
   position: relative;
 }
@@ -83,17 +76,10 @@
   left: 100%;
   width: 250px;
   z-index: 1001;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .nested-dropdown:hover .nested-dropdown-menu {
   display: block;
-}
-
-.nested-dropdown-menu.show {
-  display: block;
-  opacity: 1;
-  visibility: visible;
 }
 
 .nested-dropdown a {
@@ -105,13 +91,11 @@
   transition: background-color 0.3s;
 }
 
-.nested-dropdown a:hover {
-  background-color: #61dafb;
-  color: #ffffff;
-}
-
 .search-container {
   margin: 0 20px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
 }
 
 .search-input {
@@ -119,12 +103,10 @@
   padding: 8px;
   border-radius: 4px;
   font-size: 14px;
-  transition: border-color 0.3s;
-}
-
-.search-input:focus {
-  border-color: #61dafb;
-  outline: none;
+  flex-grow: 1; 
+  width: 30%;
+  align-items: center;
+  margin-right: 10px;
 }
 
 .button {
@@ -143,7 +125,129 @@
   background-color: #21a1f1;
 }
 
-/* Responsive styling */
+.full-screen-container {
+  display: flex;
+  height: 100vh;
+  background: linear-gradient(to right, #1db954, #beafaf);
+  color: #fff;
+}
+
+.right-content {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.dialog {
+  width: 100%;
+  max-width: 400px;
+  background-color: #565454;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.back-button {
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mobile-input {
+  width: 94%;
+  padding: 12px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  outline: none;
+}
+
+.continue-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #1db954;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.continue-button:hover {
+  background-color: #1ed760;
+}
+
+.terms {
+  margin-top: 15px;
+  font-size: 0.8rem;
+  color: #b3b3b3;
+  line-height: 1.4;
+}
+
+.terms a {
+  color: #1db954;
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+.connect-heading {
+  margin: 20px 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #b3b3b3;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: opacity 0.3s ease;
+}
+
+.social-button:hover {
+  opacity: 0.9;
+}
+
+.toggle-link {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #b3b3b3;
+}
+
+.toggle-link-text {
+  color: #1db954;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.toggle-link-text:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
   .navbar {
     padding: 10px;
@@ -174,4 +278,41 @@
     width: 100%;
     box-shadow: none;
   }
+}
+
+.search-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgb(138, 131, 131);
+  border: 1px solid #ccc;
+  z-index: 1000; 
+  width: 300px; 
+  padding: 20px;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-popup ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-popup li {
+  cursor: pointer;
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.search-popup img {
+  width: 30px; 
+  height: 30px; 
+  margin-right: 10px;
 }

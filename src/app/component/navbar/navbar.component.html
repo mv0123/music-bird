@@ -1,13 +1,14 @@
 <header class="navbar">
   <div class="between">
-    <nav class="d-flex space-between align-center">
+    <nav class="d-flex align-center">
       <div class="left-content">
         <a routerLink="/" class="nav-link">
           <img src="/assets/logo-gif.gif" alt="Logo" height="40px" class="img">
         </a>
         <ul class="nav-links">
-          <!-- Music dropdown -->
-          <li class="nav-link dropdown" (mouseover)="toggleDropdown('music', true)" (mouseleave)="toggleDropdown('music', false)">
+          <!-- Music Dropdown -->
+          <li class="nav-link dropdown" (mouseover)="toggleDropdown('music', true)"
+            (mouseleave)="toggleDropdown('music', false)">
             <a>Music</a>
             <div class="dropdown-menu" [ngClass]="{'show': dropdowns['music']}">
               <div class="dropdown-content">
@@ -29,8 +30,9 @@
               </div>
             </div>
           </li>
-          <!-- Podcasts dropdown -->
-          <li class="nav-link dropdown" (mouseover)="toggleDropdown('podcasts', true)" (mouseleave)="toggleDropdown('podcasts', false)">
+          <!-- Podcasts Dropdown -->
+          <li class="nav-link dropdown" (mouseover)="toggleDropdown('podcasts', true)"
+            (mouseleave)="toggleDropdown('podcasts', false)">
             <a>Podcasts</a>
             <div class="dropdown-menu" [ngClass]="{'show': dropdowns['podcasts']}">
               <div class="dropdown-content">
@@ -50,8 +52,9 @@
               </div>
             </div>
           </li>
-          <!-- GO Pro dropdown -->
-          <li class="nav-link dropdown" (mouseover)="toggleDropdown('goPro', true)" (mouseleave)="toggleDropdown('goPro', false)">
+          <!-- GO Pro Dropdown -->
+          <li class="nav-link dropdown" (mouseover)="toggleDropdown('goPro', true)"
+            (mouseleave)="toggleDropdown('goPro', false)">
             <a (click)="openSubscribePopup()">GO Pro</a>
             <div class="dropdown-menu" [ngClass]="{'show': dropdowns['goPro']}">
               <div class="dropdown-content">
@@ -96,22 +99,72 @@
         </ul>
       </div>
 
-      <!-- Search Bar -->
-      <div class="search-container">
-        <input 
-          [(ngModel)]="searchQuery" 
-          (keyup.enter)="searchSongs()" 
-          type="text" 
-          placeholder="Search for songs..." 
-          class="search-input">
+      <div class="navbarSearch">
+        <div class="search-container">
+          <input [(ngModel)]="searchQuery" (keyup.enter)="searchSongs()" type="text" placeholder="Search for songs..."
+            class="search-input" />
+          <button (click)="searchSongs()" class="button">Search</button>
+        </div>
+
+        <div *ngIf="showPopup" class="search-popup">
+          <div class="popup-header">
+            <h3>Search Results</h3>
+            <button (click)="closePopup()" class="close-button">Close</button>
+          </div>
+
+          <div *ngIf="isLoading" class="loading-indicator">Loading...</div>
+
+          <div *ngIf="!isLoading">
+            <div *ngIf="searchResults.length > 0">
+              <ul class="result-list">
+                <li *ngFor="let song of searchResults" (click)="playSong(song)" class="result-item">
+                  <img *ngIf="song.image" [src]="song.image" alt="{{ song.title }}" class="result-image" />
+                  <span class="result-title">{{ song.title }} - {{ song.artist }}</span>
+                </li>
+              </ul>
+            </div>
+            <div *ngIf="searchResults.length === 0" class="no-results">No results found.</div>
+          </div>
+        </div>
       </div>
 
-      <div>
-        <button class="button" (click)="navigateToLogin(false)">Log In</button>
-        <button class="button" (click)="navigateToLogin(true)">Sign Up</button>
+      <div class="right-content">
+        <div class="auth-buttons">
+          <button class="button" (click)="showLoginSignupPopup('login')">Log In</button>
+          <button class="button" (click)="showLoginSignupPopup('signup')">Sign Up</button>
+        </div>
       </div>
     </nav>
   </div>
 
   <app-subscription-popup *ngIf="showSubscribePopup" (close)="closeSubscribePopup()"></app-subscription-popup>
+
+  <div class="full-screen-container" *ngIf="showLoginSignup">
+    <div class="right-side">
+      <div class="dialog">
+        <button class="back-button" (click)="closeLoginSignupPopup()">← Back</button>
+        <div class="dialog-content">
+          <h1 class="welcome-heading">Welcome to JioSaavn</h1>
+          <p class="sub-heading">{{ isSignUp ? 'Sign Up' : 'Log in' }} to access your music world!</p>
+          <div class="input-container">
+            <input type="tel" placeholder="Enter Your Mobile Number" class="mobile-input" [(ngModel)]="mobileNumber">
+            <button class="continue-button" (click)="continue()">{{ isSignUp ? 'Sign Up' : 'Log In' }}</button>
+          </div>
+          <div class="terms">
+            <p>Select ‘Continue’ to agree to our <a href="#">Terms of Service</a> and acknowledge our <a
+                href="#">Privacy Policy</a>.</p>
+          </div>
+          <h4 class="connect-heading"><span>OR CONNECT WITH</span></h4>
+          <div class="social-buttons">
+            <button class="social-button facebook-button">Facebook</button>
+            <button class="social-button google-button">Google</button>
+          </div>
+          <p class="toggle-link">
+            {{ isSignUp ? "Already have an account?" : "Don't have an account?" }}
+            <a (click)="toggleSignUp()" class="toggle-link-text">{{ isSignUp ? 'Log In' : 'Sign Up' }}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>

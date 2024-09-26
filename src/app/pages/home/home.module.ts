@@ -11,7 +11,6 @@ import { NavbarComponent } from '../../component/navbar/navbar.component';
 import { SidebarComponent } from '../../component/sidebar/sidebar.component';
 import { PlayerComponent } from '../../component/player/player.component';
 import { ButtonModule } from 'primeng/button';
-import { LoginComponent } from '../../component/Dialog/login/login.component';
 import { TopArtistsComponent } from './top-artists/top-artists.component';
 import { TopChartsComponent } from './top-charts/top-charts.component';
 import { TopPlaylistsComponent } from './top-playlists/top-playlists.component';
@@ -31,7 +30,6 @@ import { SubscriptionPopupComponent } from '../subscription-popup/subscription-p
     FooterComponent,
     SidebarComponent,
     PlayerComponent,
-    LoginComponent,
     TopArtistsComponent,
     TopChartsComponent,
     TopPlaylistsComponent,
