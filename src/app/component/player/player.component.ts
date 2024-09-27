@@ -22,13 +22,17 @@ export class PlayerComponent implements OnInit {
   song: Song = { name: 'Select song', id: '' };
   data: any;
   currentSongId: string | null = null;
-  currentIndex: number = 0;
   audioSrc: string | undefined;
   label: any;
   isPlaying = false;
   progress = 0;
   currentTime = 0;
   duration = 0;
+  volume = 1;
+  isMuted = false;
+  showVolume = false;
+  
+  private clickTimeout: any;
 
   constructor(private eventsService: EventsService, private apiService: JiosavanService) { }
 
@@ -82,21 +86,23 @@ export class PlayerComponent implements OnInit {
 
     if (apiCalls === 0) {
       this.songs = allSongs;
+      console.log('All songs:', this.songs); // Log all songs
     }
   }
 
   checkApiCallsCompletion(apiCalls: number, allSongs: Song[]) {
     if (apiCalls <= 0) {
       this.songs = allSongs;
+      console.log('All songs:', this.songs); // Log after all calls are completed
     }
   }
-
 
   getSongDetails(song_id: string) {
     this.apiService.getSongData(song_id).subscribe((res: any) => {
       if (res.data.length > 0) {
         this.label = res.data[0];
         this.song = res.data[0].downloadUrl[4];
+        console.log('Current song:', this.song); // Log current song details
         this.playAudio();
       } else {
         console.error('No song data found for ID:', song_id);
@@ -106,27 +112,11 @@ export class PlayerComponent implements OnInit {
     });
   }
 
-  get remainingTime() {
-    return Math.max(0, this.duration - this.currentTime);
-  }
-
-
-  onProgressClick(event: MouseEvent) {
-    const progressContainer = (event.target as HTMLElement).parentElement;
-    const rect = progressContainer?.getBoundingClientRect();
-    if (rect) {
-      const clickX = event.clientX - rect.left;
-      const totalWidth = rect.width;
-      const newTime = (clickX / totalWidth) * this.duration;
-      this.audioPlayer.nativeElement.currentTime = newTime;
-      this.updateProgress();
-    }
-  }
-
   previousSong() {
     const previousIndex = this.getPreviousSongIndex(this.currentSongId!);
     if (previousIndex !== null) {
       const previousSong = this.songs[previousIndex];
+      console.log('Playing previous song:', previousSong); // Log previous song
       this.playSong(previousSong);
     }
   }
@@ -135,6 +125,7 @@ export class PlayerComponent implements OnInit {
     const nextIndex = this.getNextSongIndex(this.currentSongId!);
     if (nextIndex !== null) {
       const nextSong = this.songs[nextIndex];
+      console.log('Playing next song:', nextSong); 
       this.playSong(nextSong);
     }
   }
@@ -212,5 +203,63 @@ export class PlayerComponent implements OnInit {
     return num < 10 ? '0' + num : num.toString();
   }
 
+  seek(seconds: number) {
+    const newTime = this.audioPlayer.nativeElement.currentTime + seconds;
+    this.audioPlayer.nativeElement.currentTime = Math.min(Math.max(newTime, 0), this.duration);
+    this.updateProgress();
+  }
 
+  changeVolume(delta: number) {
+    this.volume = Math.min(Math.max(this.volume + delta, 0), 1);
+    if (!this.isMuted) {
+      this.audioPlayer.nativeElement.volume = this.volume; 
+    }
+    this.showVolume = true; 
+    clearTimeout(this.volumeTimeout);
+    this.volumeTimeout = setTimeout(() => {
+      this.showVolume = false;
+    }, 1000);
+  }
+
+  private volumeTimeout: any; 
+
+  handleNextClick() {
+    clearTimeout(this.clickTimeout);
+    this.clickTimeout = setTimeout(() => {
+      this.playNextSong(); 
+    }, 250); 
+  }
+
+  handleNextDoubleClick() {
+    clearTimeout(this.clickTimeout);
+    this.seek(10); 
+  }
+
+  toggleMute() {
+    this.isMuted = !this.isMuted;
+    this.audioPlayer.nativeElement.volume = this.isMuted ? 0 : this.volume; 
+  }
+  handlePreviousClick() {
+    clearTimeout(this.clickTimeout);
+    this.clickTimeout = setTimeout(() => {
+      this.previousSong(); 
+    }, 250);
+  }
+
+  handlePreviousDoubleClick() {
+    clearTimeout(this.clickTimeout);
+    this.seek(-10);
+  }
+  onProgressClick(event: MouseEvent) {
+  const progressContainer = (event.target as HTMLElement).parentElement;
+  const rect = progressContainer?.getBoundingClientRect();
+  if (rect) {
+    const clickX = event.clientX - rect.left;
+    const totalWidth = rect.width;
+    const newTime = (clickX / totalWidth) * this.duration;
+    this.audioPlayer.nativeElement.currentTime = newTime;
+    this.updateProgress();
+  }
+  }
 }
+

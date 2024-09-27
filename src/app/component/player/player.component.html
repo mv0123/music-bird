@@ -13,16 +13,31 @@
     </div>
 
     <div class="player-controls">
-      <button (click)="previousSong()" class="control-btn" [disabled]="!currentSongId">
+      <button (click)="handlePreviousClick()" (dblclick)="handlePreviousDoubleClick()" class="control-btn" [disabled]="!currentSongId">
         <i class="material-icons">skip_previous</i>
       </button>
-      <button (click)="togglePlayPause()" class="control-btn"  [disabled]="!currentSongId">
+      <button (click)="togglePlayPause()" class="control-btn" [disabled]="!currentSongId">
         <i class="material-icons">{{ isPlaying ? 'pause' : 'play_arrow' }}</i>
       </button>
-      <button (click)="playNextSong()" class="control-btn" [disabled]="!currentSongId">
+      <button (click)="handleNextClick()" (dblclick)="handleNextDoubleClick()" class="control-btn" [disabled]="!currentSongId">
         <i class="material-icons">skip_next</i>
       </button>
     </div>
+
+    <div class="volume-controls">
+      <button (click)="changeVolume(-0.1)" class="control-btn">
+        <i class="material-icons">volume_down</i>
+      </button>
+      <button (click)="toggleMute()" class="control-btn">
+        <i class="material-icons">{{ isMuted ? 'volume_off' : 'volume_mute' }}</i>
+      </button>
+      <button (click)="changeVolume(0.1)" class="control-btn">
+        <i class="material-icons">volume_up</i>
+      </button>
+      <span *ngIf="showVolume" class="volume-display">Volume: {{ (volume * 100).toFixed(0) }}%</span>
+    </div>
+    
+    
 
     <div class="time-info">
       <span>{{ formatTime(currentTime) }}</span> / <span>{{ formatTime(duration) }}</span>

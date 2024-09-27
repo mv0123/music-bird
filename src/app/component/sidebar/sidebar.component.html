@@ -1,6 +1,9 @@
-<aside class="sidebar h-full padding">
-    <nav>
-      <h1 class="span">BROWSE</h1>
+<aside class="sidebar h-full padding" [class.closed]="isClosed">
+  <button class="toggle-button" (click)="toggleSidebar()">
+    <i class="fas" [ngClass]="isClosed ? 'fa-angle-right' : 'fa-angle-left'"></i>
+  </button>
+  <nav>
+    <h1 class="span">BROWSE</h1>
       <ul>
         <li><a routerLink="/newReleases" (click)="navigate('/newReleases')">Releases</a></li>
         <li><a routerLink="/topCharts" (click)="navigate('/topCharts')">Top Charts</a></li>

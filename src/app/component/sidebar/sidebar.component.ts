@@ -12,9 +12,13 @@ export class SidebarComponent implements OnInit {
 
   constructor(private eventService: EventsService) { }
   isSignUp = false;
+  isClosed = false;
 
   ngOnInit(): void { }
-
+  
+  toggleSidebar() {
+    this.isClosed = !this.isClosed;
+  }
   navigate(link: string): void {
     this.linkClick.emit(link);
   }
