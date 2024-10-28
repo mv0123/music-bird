@@ -104,9 +104,8 @@
 
 @media (max-width: 768px) {
     .player-body {
-        flex-direction: column;
-        align-items: center;
-        display: flex;
+        flex-direction: row; /* Change to row for smaller screens */
+        justify-content: center; /* Center items horizontally */
     }
 
     .song-details {

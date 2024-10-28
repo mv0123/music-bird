@@ -18,6 +18,9 @@ import { PlaylistsComponent } from './playlist/playlists/playlists.component';
 import { AlbumComponent } from './playlist/album/album.component';
 import { FormsModule } from '@angular/forms';
 import { SubscriptionPopupComponent } from '../subscription-popup/subscription-popup.component';
+import { AuthComponent } from '../../component/auth/auth.component';
+import { LoginComponent } from '../../component/login/login.component';
+import { SearchResultsComponent } from '../../component/search-results/search-results.component';
 
 
 @NgModule({
@@ -36,7 +39,10 @@ import { SubscriptionPopupComponent } from '../subscription-popup/subscription-p
     PlaylistsComponent,
     AlbumComponent,
     PodcastsComponent,
-    SubscriptionPopupComponent
+    SubscriptionPopupComponent,
+    LoginComponent,
+    SearchResultsComponent,
+    AuthComponent
   ],
   imports: [
     CommonModule,

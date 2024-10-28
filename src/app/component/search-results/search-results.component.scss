@@ -1,0 +1,112 @@
+.player-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .song-details {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .song-image {
+    flex: 0 0 150px;
+    margin-right: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .song-image img {
+    width: 100%;
+  }
+  
+  .song-info {
+    flex: 1;
+  }
+  
+  .artist-list {
+    margin-top: 10px;
+  }
+  
+  .artist-list a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .controls {
+    margin: 20px 0;
+  }
+  
+  .controls button {
+    margin: 0 10px;
+    padding: 10px 20px;
+  }
+  
+  .progress-container {
+    background: #eee;
+    height: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+  }
+  
+  .progress-bar {
+    background: #007bff;
+    height: 100%;
+    border-radius: 5px;
+  }
+  
+  .time-display {
+    margin: 10px 0;
+  }
+  
+  .volume-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .volume-control button {
+    margin-right: 10px;
+  }
+  
+  .card-cnt {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .card {
+    text-align: center;
+    margin: 15px;
+    cursor: pointer;
+  }
+  
+  .image-container {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .song-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover .image-container {
+    transform: scale(1.05);
+  }
+  
+  .card:hover .song-image {
+    transform: scale(1.1);
+  }
+  

@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { EventsService } from '../../core/services/events.service';
 import { JiosavanService } from '../../core/services/jiosavan.service';
+// import { DatabaseService } from '../../core/services/database.service';
+// import { AuthService } from '../../core/services/auth.service';
 
 interface Song {
   image?: any[];
@@ -17,8 +19,9 @@ interface Song {
 })
 export class PlayerComponent implements OnInit {
   @ViewChild('audioPlayer') audioPlayer!: ElementRef<HTMLAudioElement>;
-
+  @Output() songLiked = new EventEmitter<Song>();
   songs: Song[] = [];
+  filteredSongs: Song[] = [];
   song: Song = { name: 'Select song', id: '' };
   data: any;
   currentSongId: string | null = null;
@@ -31,10 +34,14 @@ export class PlayerComponent implements OnInit {
   volume = 1;
   isMuted = false;
   showVolume = false;
-  
+  isLiked: boolean = false;
+
+
   private clickTimeout: any;
 
-  constructor(private eventsService: EventsService, private apiService: JiosavanService) { }
+  constructor(private eventsService: EventsService, private apiService: JiosavanService, 
+    // private authService: AuthService, private dbService: DatabaseService
+  ) {}
 
   ngOnInit(): void {
     this.eventsService.subscribe('playSong', (data: any) => {
@@ -54,6 +61,19 @@ export class PlayerComponent implements OnInit {
     });
   }
 
+  async toggleLike() {
+    if (!this.currentSongId) {
+      console.error('Current song ID is null');
+      return; // Exit if currentSongId is null
+    }
+
+    this.isLiked = !this.isLiked;
+
+    if (this.isLiked && this.song) {
+      this.songLiked.emit(this.song as Song); // Emit the liked song, ensuring it matches the type
+    }
+  }
+  
   extractSongsFromData(data: any) {
     const allSongs: Song[] = [];
     let apiCalls = 0;
@@ -86,14 +106,27 @@ export class PlayerComponent implements OnInit {
 
     if (apiCalls === 0) {
       this.songs = allSongs;
-      console.log('All songs:', this.songs); // Log all songs
+      this.filteredSongs = allSongs; // Initialize filteredSongs
+      console.log('All songs:', this.songs);
     }
   }
 
   checkApiCallsCompletion(apiCalls: number, allSongs: Song[]) {
     if (apiCalls <= 0) {
       this.songs = allSongs;
-      console.log('All songs:', this.songs); // Log after all calls are completed
+      this.filteredSongs = allSongs; // Initialize filteredSongs after all calls
+      console.log('All songs:', this.songs);
+    }
+  }
+
+  searchSongs(query: string) {
+    if (!query) {
+      this.filteredSongs = this.songs; // Reset to all songs if query is empty
+    } else {
+      this.filteredSongs = this.songs.filter(song =>
+        song.name?.toLowerCase().includes(query.toLowerCase()) ||
+        (song.label && song.label.toLowerCase().includes(query.toLowerCase()))
+      );
     }
   }
 
@@ -239,6 +272,7 @@ export class PlayerComponent implements OnInit {
     this.isMuted = !this.isMuted;
     this.audioPlayer.nativeElement.volume = this.isMuted ? 0 : this.volume; 
   }
+
   handlePreviousClick() {
     clearTimeout(this.clickTimeout);
     this.clickTimeout = setTimeout(() => {
@@ -250,16 +284,16 @@ export class PlayerComponent implements OnInit {
     clearTimeout(this.clickTimeout);
     this.seek(-10);
   }
+
   onProgressClick(event: MouseEvent) {
-  const progressContainer = (event.target as HTMLElement).parentElement;
-  const rect = progressContainer?.getBoundingClientRect();
-  if (rect) {
-    const clickX = event.clientX - rect.left;
-    const totalWidth = rect.width;
-    const newTime = (clickX / totalWidth) * this.duration;
-    this.audioPlayer.nativeElement.currentTime = newTime;
-    this.updateProgress();
-  }
+    const progressContainer = (event.target as HTMLElement).parentElement;
+    const rect = progressContainer?.getBoundingClientRect();
+    if (rect) {
+      const clickX = event.clientX - rect.left;
+      const totalWidth = rect.width;
+      const newTime = (clickX / totalWidth) * this.duration;
+      this.audioPlayer.nativeElement.currentTime = newTime;
+      this.updateProgress();
+    }
   }
 }
-

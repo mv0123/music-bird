@@ -9,6 +9,9 @@ import { TopPlaylistsComponent } from './top-playlists/top-playlists.component';
 import { TopChartsComponent } from './top-charts/top-charts.component';
 import { PlaylistsComponent } from './playlist/playlists/playlists.component';
 import { AlbumComponent } from './playlist/album/album.component';
+import { AuthComponent } from '../../component/auth/auth.component';
+import { SearchResultsComponent } from '../../component/search-results/search-results.component';
+import { LoginComponent } from '../../component/login/login.component';
 
 
 const routes: Routes = [
@@ -22,8 +25,13 @@ const routes: Routes = [
       { path: "topArtists", component: TopArtistsComponent },
       { path: 'playlists/:id', component: PlaylistsComponent },
       { path: 'album/:id', component: AlbumComponent },
+      { path: 'search-results', component: SearchResultsComponent },
+      { path: 'login', component: LoginComponent },
+
     ]
   },
+  { path: 'auth', component: AuthComponent },
+
 
 ];
 

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +33,14 @@ export class JiosavanService {
 
   getArtistData(id: string): Observable<any> {
     return this.http.get(`${this.apiUrl}artistslists?id=${id}`);
+  }
+  getInitialData(): Observable<any> {
+    // Combine multiple requests if needed
+    return forkJoin({
+      trendingSongs: this.getDashboardData(), // Assuming this gives you trending songs
+      albums: this.getDashboardData(),        // Adjust as per your API
+      charts: this.getDashboardData(),        // Adjust as per your API
+      playlists: this.getDashboardData()      // Adjust as per your API
+    });
   }
 }

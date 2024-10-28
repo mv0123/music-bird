@@ -1,109 +1,14 @@
 <header class="navbar">
   <div class="between">
     <nav class="d-flex align-center">
-      <div class="left-content">
-        <a routerLink="/" class="nav-link">
-          <img src="/assets/logo-gif.gif" alt="Logo" height="40px" class="img">
-        </a>
-        <ul class="nav-links">
-          <!-- Music Dropdown -->
-          <li class="nav-link dropdown" (mouseover)="toggleDropdown('music', true)"
-            (mouseleave)="toggleDropdown('music', false)">
-            <a>Music</a>
-            <div class="dropdown-menu" [ngClass]="{'show': dropdowns['music']}">
-              <div class="dropdown-content">
-                <a routerLink="/newReleases">New Releases</a>
-                <a routerLink="/topCharts">Top Charts</a>
-                <a routerLink="/topPlaylists">Top Playlists</a>
-                <div class="nested-dropdown">
-                  <a href="javascript:void(0)">Genres</a>
-                  <div class="nested-dropdown-menu">
-                    <a href="javascript:void(0)">Pop</a>
-                    <a href="javascript:void(0)">Rock</a>
-                    <a href="javascript:void(0)">Hip-Hop</a>
-                    <a href="javascript:void(0)">Classical</a>
-                    <a href="javascript:void(0)">Jazz</a>
-                    <a href="javascript:void(0)">Country</a>
-                    <a href="javascript:void(0)">Electronic</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <!-- Podcasts Dropdown -->
-          <li class="nav-link dropdown" (mouseover)="toggleDropdown('podcasts', true)"
-            (mouseleave)="toggleDropdown('podcasts', false)">
-            <a>Podcasts</a>
-            <div class="dropdown-menu" [ngClass]="{'show': dropdowns['podcasts']}">
-              <div class="dropdown-content">
-                <a routerLink="/podCasts">All Podcasts</a>
-                <div class="nested-dropdown">
-                  <a href="javascript:void(0)">Categories</a>
-                  <div class="nested-dropdown-menu">
-                    <a href="javascript:void(0)">Technology</a>
-                    <a href="javascript:void(0)">Business</a>
-                    <a href="javascript:void(0)">Health</a>
-                    <a href="javascript:void(0)">Entertainment</a>
-                    <a href="javascript:void(0)">Science</a>
-                    <a href="javascript:void(0)">Education</a>
-                    <a href="javascript:void(0)">Society</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <!-- GO Pro Dropdown -->
-          <li class="nav-link dropdown" (mouseover)="toggleDropdown('goPro', true)"
-            (mouseleave)="toggleDropdown('goPro', false)">
-            <a (click)="openSubscribePopup()">GO Pro</a>
-            <div class="dropdown-menu" [ngClass]="{'show': dropdowns['goPro']}">
-              <div class="dropdown-content">
-                <a (click)="openSubscribePopup()">Subscribe</a>
-                <div class="nested-dropdown">
-                  <a href="javascript:void(0)">Premium Benefits</a>
-                  <div class="nested-dropdown-menu">
-                    <a href="javascript:void(0)">Ad-Free Experience</a>
-                    <a href="javascript:void(0)">Offline Listening</a>
-                    <a href="javascript:void(0)">High-Quality Audio</a>
-                    <a href="javascript:void(0)">Exclusive Content</a>
-                    <a href="javascript:void(0)">Early Access</a>
-                    <a href="javascript:void(0)">Discounts on Merchandise</a>
-                    <a href="javascript:void(0)">Priority Support</a>
-                  </div>
-                </div>
-                <div class="nested-dropdown">
-                  <a href="javascript:void(0)">FAQ</a>
-                  <div class="nested-dropdown-menu">
-                    <a href="javascript:void(0)">General Questions</a>
-                    <a href="javascript:void(0)">Account Issues</a>
-                    <a href="javascript:void(0)">Subscription Management</a>
-                    <a href="javascript:void(0)">Payment Issues</a>
-                    <a href="javascript:void(0)">Technical Support</a>
-                    <a href="javascript:void(0)">Troubleshooting</a>
-                  </div>
-                </div>
-                <div class="nested-dropdown">
-                  <a href="javascript:void(0)">Contact Support</a>
-                  <div class="nested-dropdown-menu">
-                    <a href="javascript:void(0)">Email Support</a>
-                    <a href="javascript:void(0)">Live Chat</a>
-                    <a href="javascript:void(0)">Phone Support</a>
-                    <a href="javascript:void(0)">Submit a Ticket</a>
-                    <a href="javascript:void(0)">Support Center</a>
-                    <a href="javascript:void(0)">Feedback</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
+      <a routerLink="/" class="nav-link">
+        <img src="/assets/logo-gif.gif" alt="Logo" height="40px" class="img">
+      </a>
 
       <div class="navbarSearch">
         <div class="search-container">
-          <input [(ngModel)]="searchQuery" (keyup.enter)="searchSongs()" type="text" placeholder="Search for songs..."
-            class="search-input" />
-          <button (click)="searchSongs()" class="button">Search</button>
+          <input [(ngModel)]="searchQuery" (focus)="navigateToSearch()" (input)="searchSongs()" type="text"
+            placeholder="Search for songs..." class="search-input" />
         </div>
 
         <div *ngIf="showPopup" class="search-popup">
@@ -117,10 +22,11 @@
           <div *ngIf="!isLoading">
             <div *ngIf="searchResults.length > 0">
               <ul class="result-list">
-                <li *ngFor="let song of searchResults" (click)="playSong(song)" class="result-item">
+                <li *ngFor="let song of searchResults" (click)="addLikedSong(song)" class="result-item">
                   <img *ngIf="song.image" [src]="song.image" alt="{{ song.title }}" class="result-image" />
                   <span class="result-title">{{ song.title }} - {{ song.artist }}</span>
                 </li>
+
               </ul>
             </div>
             <div *ngIf="searchResults.length === 0" class="no-results">No results found.</div>
@@ -128,43 +34,32 @@
         </div>
       </div>
 
-      <div class="right-content">
+      <!-- <div class="right-content">
         <div class="auth-buttons">
-          <button class="button" (click)="showLoginSignupPopup('login')">Log In</button>
-          <button class="button" (click)="showLoginSignupPopup('signup')">Sign Up</button>
+          <button class="button" (click)="showLogin = !showLogin">
+            <i class="material-icons">login</i> Log In
+          </button>
+          <button class="button" (click)="showSignup = !showSignup">
+            <i class="material-icons">person_add</i> Sign Up
+          </button>
+          <button (click)="addSong()">
+            <i class="material-icons">add_circle</i></button>
         </div>
-      </div>
+      </div> -->
     </nav>
   </div>
 
-  <app-subscription-popup *ngIf="showSubscribePopup" (close)="closeSubscribePopup()"></app-subscription-popup>
+  <app-login *ngIf="showLogin" (close)="showLogin = false"></app-login>
 
-  <div class="full-screen-container" *ngIf="showLoginSignup">
-    <div class="right-side">
-      <div class="dialog">
-        <button class="back-button" (click)="closeLoginSignupPopup()">← Back</button>
-        <div class="dialog-content">
-          <h1 class="welcome-heading">Welcome to JioSaavn</h1>
-          <p class="sub-heading">{{ isSignUp ? 'Sign Up' : 'Log in' }} to access your music world!</p>
-          <div class="input-container">
-            <input type="tel" placeholder="Enter Your Mobile Number" class="mobile-input" [(ngModel)]="mobileNumber">
-            <button class="continue-button" (click)="continue()">{{ isSignUp ? 'Sign Up' : 'Log In' }}</button>
-          </div>
-          <div class="terms">
-            <p>Select ‘Continue’ to agree to our <a href="#">Terms of Service</a> and acknowledge our <a
-                href="#">Privacy Policy</a>.</p>
-          </div>
-          <h4 class="connect-heading"><span>OR CONNECT WITH</span></h4>
-          <div class="social-buttons">
-            <button class="social-button facebook-button">Facebook</button>
-            <button class="social-button google-button">Google</button>
-          </div>
-          <p class="toggle-link">
-            {{ isSignUp ? "Already have an account?" : "Don't have an account?" }}
-            <a (click)="toggleSignUp()" class="toggle-link-text">{{ isSignUp ? 'Log In' : 'Sign Up' }}</a>
-          </p>
-        </div>
-      </div>
-    </div>
+  <div class="liked-songs-card" *ngIf="likedSongs.length > 0">
+    <h3>Liked Songs</h3>
+    <ul>
+      <li *ngFor="let song of likedSongs">
+        <img *ngIf="song.image" [src]="song.image" alt="{{ song.title }}" class="liked-song-image" />
+        <span>{{ song.title }} - {{ song.artist }}</span>
+      </li>
+    </ul>
   </div>
+
+
 </header>

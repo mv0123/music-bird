@@ -15,10 +15,7 @@ export class SidebarComponent implements OnInit {
   isClosed = false;
 
   ngOnInit(): void { }
-  
-  toggleSidebar() {
-    this.isClosed = !this.isClosed;
-  }
+
   navigate(link: string): void {
     this.linkClick.emit(link);
   }

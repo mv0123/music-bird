@@ -5,7 +5,7 @@
 
   <div class="player-body">
     <div class="song-details">
-      <img *ngIf="label?.image && label.image?.length" [src]="label?.image[0]?.link" alt="Album Art" class="album-art">
+      <img *ngIf="label?.image?.length" [src]="label?.image[0]?.link" alt="Album Art" class="album-art">
       <div class="song-info">
         <h4>{{ label?.name || 'No Song Playing' }}</h4>
         <p>{{ label?.label || 'Unknown Artist' }}</p>
@@ -24,20 +24,24 @@
       </button>
     </div>
 
-    <div class="volume-controls">
-      <button (click)="changeVolume(-0.1)" class="control-btn">
+    <!-- <div class="like-controls">
+      <button (click)="toggleLike()" class="control-btn">
+        <i class="material-icons">{{ isLiked ? 'favorite' : 'favorite_border' }}</i>
+      </button>
+    </div> -->
+
+    <!-- <div class="volume-controls">
+      <button (click)="changeVolume(-0.1)" class="control-btn" [disabled]="volume <= 0">
         <i class="material-icons">volume_down</i>
       </button>
       <button (click)="toggleMute()" class="control-btn">
         <i class="material-icons">{{ isMuted ? 'volume_off' : 'volume_mute' }}</i>
       </button>
-      <button (click)="changeVolume(0.1)" class="control-btn">
+      <button (click)="changeVolume(0.1)" class="control-btn" [disabled]="volume >= 1">
         <i class="material-icons">volume_up</i>
       </button>
       <span *ngIf="showVolume" class="volume-display">Volume: {{ (volume * 100).toFixed(0) }}%</span>
-    </div>
-    
-    
+    </div> -->
 
     <div class="time-info">
       <span>{{ formatTime(currentTime) }}</span> / <span>{{ formatTime(duration) }}</span>
