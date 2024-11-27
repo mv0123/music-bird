@@ -30,7 +30,7 @@
       </button>
     </div> -->
 
-    <!-- <div class="volume-controls">
+    <div class="volume-controls">
       <button (click)="changeVolume(-0.1)" class="control-btn" [disabled]="volume <= 0">
         <i class="material-icons">volume_down</i>
       </button>
@@ -40,8 +40,8 @@
       <button (click)="changeVolume(0.1)" class="control-btn" [disabled]="volume >= 1">
         <i class="material-icons">volume_up</i>
       </button>
-      <span *ngIf="showVolume" class="volume-display">Volume: {{ (volume * 100).toFixed(0) }}%</span>
-    </div> -->
+      <!-- <span *ngIf="showVolume" class="volume-display">Volume: {{ (volume * 100).toFixed(0) }}%</span> -->
+    </div>
 
     <div class="time-info">
       <span>{{ formatTime(currentTime) }}</span> / <span>{{ formatTime(duration) }}</span>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JiosavanService } from '../../../core/services/jiosavan.service';
-import { EventsService } from '../../../core/services/events.service';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-top-playlists',
   templateUrl: './top-playlists.component.html',

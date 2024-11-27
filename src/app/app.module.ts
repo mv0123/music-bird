@@ -10,14 +10,10 @@ import { JiosavanService } from './core/services/jiosavan.service';
 import { EventsService } from './core/services/events.service';
 import { DialogModule } from 'primeng/dialog';
 import { TabMenuModule } from 'primeng/tabmenu';
-import { AuthComponent } from './component/auth/auth.component';
-import { SearchResultsComponent } from './component/search-results/search-results.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-  
-  
   ],
 
   imports: [
@@ -29,8 +25,6 @@ import { SearchResultsComponent } from './component/search-results/search-result
     BrowserAnimationsModule,
     DialogModule,
     TabMenuModule,
-    
-    
   ],
 
   providers: [ EventsService,JiosavanService],

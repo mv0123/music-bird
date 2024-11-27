@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../core/services/auth.service'; // Ensure the path is correct
+import { AuthService } from '../../core/services/auth.service'; 
 
 @Component({
   selector: 'app-login',
@@ -17,13 +17,12 @@ export class LoginComponent {
   }
 
   continue(): void {
-    console.log(`${this.isSignUp ? 'Signing up' : 'Logging in'} with number: ${this.mobileNumber}`);
-    // Implement login/signup logic here
+   alert(`${this.isSignUp ? 'Signing up' : 'Logging in'} with number: ${this.mobileNumber}`);
   }
 
   loginWithGoogle(): void {
     this.authService.loginWithGoogle().then(() => {
-      console.log('Logged in with Google');
+      alert('Logged in with Google');
     }).catch(error => {
       console.error('Google login error:', error);
     });
@@ -31,13 +30,12 @@ export class LoginComponent {
 
   loginWithFacebook(): void {
     this.authService.loginWithFacebook().then(() => {
-      console.log('Logged in with Facebook');
+      alert('Logged in with Facebook');
     }).catch(error => {
       console.error('Facebook login error:', error);
     });
   }
 
   closeLogin(): void {
-    // Logic to close the login component
   }
 }

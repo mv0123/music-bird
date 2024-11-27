@@ -26,7 +26,6 @@ import { SearchResultsComponent } from '../../component/search-results/search-re
 @NgModule({
   declarations: [
     HomeComponent,
-    PodcastsComponent,
     NewReleasesComponent,
     DashboardComponent,
     NavbarComponent,

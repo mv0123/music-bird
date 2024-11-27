@@ -5,7 +5,7 @@ import { Auth, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from 
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private auth: Auth) {}
+  constructor(private auth: Auth) { }
 
   async loginWithGoogle() {
     const provider = new GoogleAuthProvider();

@@ -13,7 +13,7 @@ export class TopChartsComponent implements OnInit {
 
   };
 
-  constructor(private eventsService: EventsService, private apiService: JiosavanService, private router: Router) { }
+  constructor(private apiService: JiosavanService, private router: Router) { }
 
   ngOnInit(): void {
     this.apiService.getDashboardData().subscribe((res: any) => {

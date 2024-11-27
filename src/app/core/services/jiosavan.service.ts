@@ -9,7 +9,7 @@ export class JiosavanService {
 
   private apiUrl = 'https://jio-saavn-pi.vercel.app/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getDashboardData(): Observable<any> {
     return this.http.get(`${this.apiUrl}modules?language=haryanvi,punjabi`);
@@ -35,12 +35,11 @@ export class JiosavanService {
     return this.http.get(`${this.apiUrl}artistslists?id=${id}`);
   }
   getInitialData(): Observable<any> {
-    // Combine multiple requests if needed
     return forkJoin({
-      trendingSongs: this.getDashboardData(), // Assuming this gives you trending songs
-      albums: this.getDashboardData(),        // Adjust as per your API
-      charts: this.getDashboardData(),        // Adjust as per your API
-      playlists: this.getDashboardData()      // Adjust as per your API
+      trendingSongs: this.getDashboardData(), 
+      albums: this.getDashboardData(),      
+      charts: this.getDashboardData(),        
+      playlists: this.getDashboardData()      
     });
   }
 }

@@ -79,51 +79,6 @@ export class SearchResultsComponent implements OnInit {
   }
 
   searchSongs(): void {
-    if (this.searchQuery.trim()) {
-      this.isLoading = true;
-      this.jiosavanService.searchSongs(this.searchQuery).subscribe(
-        response => {
-          this.isLoading = false;
-          const songResults: Song[] = response?.songs?.results || [];
-          const albumResults: Album[] = response?.albums?.results || [];
-          const topQueryResults: TopQuery[] = response?.topQuery?.results || [];
-
-          // this.searchResults = [
-          //   ...songResults.map(song => ({
-          //     id: song.id,
-          //     title: song.title,
-          //     image: song.image[0]?.link || '',
-          //     artist: song.primaryArtists || song.singers || "Unknown Artist",
-          //     url: song.url
-          //   })),
-          //   ...albumResults.map(album => ({
-          //     id: album.songIds.split(',')[0],
-          //     title: album.title,
-          //     image: album.image[0]?.link || '',
-          //     artist: album.artist,
-          //     url: album.url
-          //   })),
-          //   ...topQueryResults.map(query => ({
-          //     id: query.id,
-          //     title: query.title,
-          //     image: query.image[0]?.link || '',
-          //     artist: query.primaryArtists || "Unknown Artist",
-          //     url: query.url
-          //   }))
-          // ];
-
-          if (!this.searchResults.length) {
-            console.log("No results found.");
-          }
-        },
-        error => {
-          console.error('Error fetching search results:', error);
-          this.isLoading = false;
-        }
-      );
-    } else {
-      this.clearSearch();
-    }
   }
 
   clearSearch(): void {

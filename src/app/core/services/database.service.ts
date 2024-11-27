@@ -6,7 +6,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class DatabaseService {
-  constructor(private firestore: Firestore, private authService: AuthService) {}
+  constructor(private firestore: Firestore, private authService: AuthService) { }
 
   async addSongToLikes(userId: string, songId: string) {
     const likesRef = doc(collection(this.firestore, 'users'), userId, 'likes', songId);

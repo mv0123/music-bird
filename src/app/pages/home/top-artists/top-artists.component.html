@@ -1,17 +1,7 @@
-<!-- <div *ngIf="artist">
-  <h2>{{ artist.name }}</h2>
-  <img [src]="artist.image" alt="{{ artist.name }}" style="width: 150px;">
-  <h4>Top Songs</h4>
-  <ul>
-    <li *ngFor="let song of artist.topSongs">{{ song.title }}</li>
-  </ul>
-</div> -->
-
-
 <div class="main">
   <h2>Top Albums</h2>
   <div class="card-cnt">
-    <div *ngFor="let album of data.albums" class="card" (click)="dynamicNavigation(album)" >
+    <div *ngFor="let album of data.albums" class="card" (click)="dynamicNavigation(album)">
       <img [src]="album.image[1].link">
       <p>{{ album.name }}</p>
       <h4>{{ album.type }} #{{album.language}}</h4>

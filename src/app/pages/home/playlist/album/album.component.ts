@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './album.component.html',
   styleUrl: './album.component.scss'
 })
-export class AlbumComponent implements OnInit{
+export class AlbumComponent implements OnInit {
   playlist: any = {};
 
   constructor(private route: ActivatedRoute, private apiService: JiosavanService, private eventsService: EventsService) { }

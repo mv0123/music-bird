@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./subscription-popup.component.scss']
 })
 export class SubscriptionPopupComponent {
-  // To handle the visibility of the popup
   showSubscribePopup: boolean = false;
 
   closePopup() {
@@ -18,8 +17,7 @@ export class SubscriptionPopupComponent {
   }
 
   subscribe(plan: string) {
-    // Handle subscription logic here
     console.log(`Subscribed to ${plan} plan`);
-    this.closePopup(); // Close the popup after subscription
+    this.closePopup(); 
   }
 }
