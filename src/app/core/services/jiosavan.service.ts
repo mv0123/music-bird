@@ -34,12 +34,4 @@ export class JiosavanService {
   getArtistData(id: string): Observable<any> {
     return this.http.get(`${this.apiUrl}artistslists?id=${id}`);
   }
-  getInitialData(): Observable<any> {
-    return forkJoin({
-      trendingSongs: this.getDashboardData(), 
-      albums: this.getDashboardData(),      
-      charts: this.getDashboardData(),        
-      playlists: this.getDashboardData()      
-    });
-  }
 }

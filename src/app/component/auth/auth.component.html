@@ -1,32 +1,43 @@
-<div class="dialog-content">
-    <button (click)="closeDialog()" class="close-button">&times;</button>
-    <div class="heading">
-      <p>{{ isSignUp ? "Don't have a JioSaavn account?" : "Already have an account?" }}
-        <span class="signup-link">
-          <a (click)="toggleAuth()" class="toggle-auth-link">{{ isSignUp ? 'Sign Up' : 'Log in' }}</a>
-        </span>
-      </p>
-    </div>
-    <hr class="divider">
-    <div class="welcome-section">
-      <h1 class="welcome-heading">Welcome To JioSaavn</h1>
-      <p class="subtext">{{ isSignUp ? 'Log in' : 'Sign in' }} to create playlists, build your library, get personalized recommendations & more!</p>
-    </div>
-    <div class="input-group">
-      <input type="tel" [(ngModel)]="mobileNumber" placeholder="Enter Your Mobile Number" class="mobile-input">
-    </div>
-    <div class="button-group">
-      <button class="continue-button" (click)="continue()" type="button">Continue</button>
-    </div>
-    <div class="terms-text">
-      <p>
-        Select ‘Continue’ to give consent to JioSaavn’s <a href="#">Terms of Service</a> and acknowledge that you have read and understood the <a href="#">Privacy Policy</a>. An SMS may be sent to authenticate your account, and message and data rates may apply.
-      </p>
-    </div>
-    <h4 class="connect-heading">OR CONNECT WITH</h4>
-    <div class="social-buttons">
-      <button class="social-button facebook-button">Facebook</button>
-      <button class="social-button email-button">E-mail</button>
-    </div>
+<div class="dialog-content container p-4 rounded shadow-lg">
+  <button (click)="closeDialog()" class="close-button btn-close"></button>
+
+  <div class="heading text-center mb-3">
+    <p class="fw-bold">
+      {{ isSignUp ? "Don't have a JioSaavn account?" : "Already have an account?" }}
+      <span class="signup-link">
+        <a (click)="toggleAuth()" class="toggle-auth-link text-primary fw-bold">{{ isSignUp ? 'Sign Up' : 'Log in' }}</a>
+      </span>
+    </p>
   </div>
-  
+
+  <hr class="divider">
+
+  <div class="welcome-section text-center">
+    <h1 class="welcome-heading fs-4 fw-bold">Welcome To JioSaavn</h1>
+    <p class="subtext text-muted">{{ isSignUp ? 'Log in' : 'Sign in' }} to create playlists, build your library, get personalized recommendations & more!</p>
+  </div>
+
+  <div class="input-group mb-3">
+    <input type="tel" [(ngModel)]="mobileNumber" placeholder="Enter Your Mobile Number"
+      class="form-control mobile-input">
+  </div>
+
+  <div class="button-group text-center">
+    <button class="btn btn-primary w-100 py-2" (click)="continue()" type="button">Continue</button>
+  </div>
+
+  <div class="terms-text text-center mt-3">
+    <p class="small text-muted">
+      Select ‘Continue’ to give consent to JioSaavn’s 
+      <a href="#" class="text-primary">Terms of Service</a> and acknowledge that you have read and understood the 
+      <a href="#" class="text-primary">Privacy Policy</a>. An SMS may be sent to authenticate your account, and message and data rates may apply.
+    </p>
+  </div>
+
+  <h4 class="connect-heading text-center mt-3 text-muted">OR CONNECT WITH</h4>
+
+  <div class="social-buttons d-flex justify-content-center gap-3 mt-2">
+    <button class="btn btn-outline-primary w-50">Facebook</button>
+    <button class="btn btn-outline-secondary w-50">E-mail</button>
+  </div>
+</div>

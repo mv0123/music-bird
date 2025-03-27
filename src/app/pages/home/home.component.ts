@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
     { label: 'Top Playlists', link: '/topPlaylists' },
     { label: 'Top Trending', link: '/podCasts' },
     { label: 'Top Albums', link: '/topArtists' },
+    { label: 'Top Radio', link: '/topRadios' },
   ];
 
   activeLink: string | undefined;
