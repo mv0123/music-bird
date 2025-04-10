@@ -17,7 +17,6 @@ import { TopPlaylistsComponent } from './top-playlists/top-playlists.component';
 import { PlaylistsComponent } from './playlist/playlists/playlists.component';
 import { AlbumComponent } from './playlist/album/album.component';
 import { FormsModule } from '@angular/forms';
-import { SubscriptionPopupComponent } from '../subscription-popup/subscription-popup.component';
 import { AuthComponent } from '../../component/auth/auth.component';
 import { LoginComponent } from '../../component/login/login.component';
 import { SearchResultsComponent } from '../../component/search-results/search-results.component';
@@ -38,7 +37,6 @@ import { SearchResultsComponent } from '../../component/search-results/search-re
     PlaylistsComponent,
     AlbumComponent,
     PodcastsComponent,
-    SubscriptionPopupComponent,
     LoginComponent,
     SearchResultsComponent,
     AuthComponent

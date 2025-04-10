@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JiosavanService } from '../../core/services/jiosavan.service';
 import { Song, Album, TopQuery } from '../../core/pipes/song.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-navbar',
@@ -17,19 +18,23 @@ export class NavbarComponent implements OnInit {
   showSignup: boolean = false;
   likedSongs: Song[] = []; 
 
-  constructor(private router: Router, private jiosavanService: JiosavanService) {}
+  constructor(private router: Router, private jiosavanService: JiosavanService, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.loadLikedSongs();
   }
 
   loadLikedSongs(): void {
-    this.likedSongs = [];
+    const storedSongs = localStorage.getItem('likedSongs');
+    this.likedSongs = storedSongs ? JSON.parse(storedSongs) : [];
+  }
+
+  saveLikedSongs(): void {
+    localStorage.setItem('likedSongs', JSON.stringify(this.likedSongs));
   }
 
   addSong(): void {
-    console.log('Add Song clicked');
-    // Implement logic for adding a song
+    this.snackBar.open('Feature coming soon!', 'Close', { duration: 2000 });
   }
   
   searchSongs(): void {
@@ -44,30 +49,34 @@ export class NavbarComponent implements OnInit {
           const albumResults: Album[] = response?.albums?.results || [];
           const topQueryResults: TopQuery[] = response?.topQuery?.results || [];
   
-          // this.searchResults = [
-          //   ...songResults.map(song => ({
-          //     id: song.id,
-          //     title: song.title,
-          //     image: song.image[0]?.link || '',
-          //     artist: song.primaryArtists || song.singers || "Unknown Artist",
-          //     url: song.url,
-          //   })),
-          //   ...albumResults.map(album => ({
-          //     id: album.songIds.split(',')[0],
-          //     title: album.title,
-          //     image: album.image[0]?.link || '',
-          //     artist: album.artist,
-          //     url: album.url,
-          //     songIds: album.songIds, // Required if needed
-          //   })),
-          //   ...topQueryResults.map(query => ({
-          //     id: query.id,
-          //     title: query.title,
-          //     image: query.image[0]?.link || '',
-          //     artist: query.primaryArtists || "Unknown Artist",
-          //     url: query.url,
-          //   }))
-          // ];
+          this.searchResults = [
+            ...songResults.map(song => ({
+              id: song.id,
+              title: song.title,
+              image: song.image[0]?.link || '',
+              artist: song.primaryArtists || song.singers || "Unknown Artist",
+              url: song.url,
+              primaryArtists: song.primaryArtists || song.singers || "Unknown Artist" // Ensuring compatibility with TopQuery
+            })) as unknown as Song[],
+          
+            ...albumResults.map(album => ({
+              id: album.songIds.split(',')[0],
+              title: album.title,
+              image: album.image[0]?.link || '',
+              artist: album.artist,
+              url: album.url,
+              songIds: album.songIds
+            })) as unknown as Album[],
+          
+            ...topQueryResults.map(query => ({
+              id: query.id,
+              title: query.title,
+              image: query.image[0]?.link || '',
+              primaryArtists: query.primaryArtists || "Unknown Artist",
+              url: query.url
+            })) as unknown as TopQuery[]
+          ];
+          
   
           if (!this.searchResults.length) {
             console.log("No results found.");
@@ -88,6 +97,8 @@ export class NavbarComponent implements OnInit {
     if (isSong(item)) { 
       if (!this.likedSongs.find(s => s.id === item.id)) {
         this.likedSongs.push(item); 
+        this.saveLikedSongs();
+        this.snackBar.open(`${item.title} added to Liked Songs`, 'Close', { duration: 2000 });
       }
     } else if (isAlbum(item)) { 
       console.log("Liked an album:", item);
@@ -117,9 +128,9 @@ export class NavbarComponent implements OnInit {
 }
 
 function isSong(item: any): item is Song {
-  return item && typeof item.singers !== 'undefined' && typeof item.primaryArtists !== 'undefined';
+  return item && item.id && (item.singers !== undefined || item.primaryArtists !== undefined);
 }
 
 function isAlbum(item: any): item is Album {
-  return item && typeof item.songIds !== 'undefined' && typeof item.title !== 'undefined';
+  return item && item.id && item.songIds !== undefined && item.title !== undefined;
 }

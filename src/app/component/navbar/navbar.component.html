@@ -1,8 +1,8 @@
 <header class="navbar">
   <div class="between">
-    <nav class="d-flex align-center">
+    <nav class="d-flex align-center space-between">
       <a routerLink="/" class="nav-link">
-        <img src="/assets/logo-gif.gif" alt="Logo" height="40px" class="img">
+        <img src="/assets/logo-gif.gif" alt="Logo" height="40px" class="logo">
       </a>
 
       <div class="navbarSearch">
@@ -14,7 +14,7 @@
         <div *ngIf="showPopup" class="search-popup">
           <div class="popup-header">
             <h3>Search Results</h3>
-            <button (click)="closePopup()" class="close-button">Close</button>
+            <button (click)="closePopup()" class="close-button">✖</button>
           </div>
 
           <div *ngIf="isLoading" class="loading-indicator">Loading...</div>
@@ -26,24 +26,10 @@
                   <img *ngIf="song.image" [src]="song.image" alt="{{ song.title }}" class="result-image" />
                   <span class="result-title">{{ song.title }} - {{ song.artist }}</span>
                 </li>
-
               </ul>
             </div>
             <div *ngIf="searchResults.length === 0" class="no-results">No results found.</div>
           </div>
-        </div>
-      </div>
-
-      <div class="right-content">
-        <div class="auth-buttons">
-          <button class="button" (click)="showLogin = !showLogin">
-            <i class="material-icons">login</i> Log In
-          </button>
-          <button class="button" (click)="showSignup = !showSignup">
-            <i class="material-icons">person_add</i> Sign Up
-          </button>
-          <button (click)="addSong()">
-            <i class="material-icons">add_circle</i></button>
         </div>
       </div>
     </nav>
@@ -60,6 +46,4 @@
       </li>
     </ul>
   </div>
-
-
 </header>

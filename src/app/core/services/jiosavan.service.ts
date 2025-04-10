@@ -34,4 +34,8 @@ export class JiosavanService {
   getArtistData(id: string): Observable<any> {
     return this.http.get(`${this.apiUrl}artistslists?id=${id}`);
   }
+
+  getDashboardEngSong(): Observable<any> {
+    return this.http.get(`${this.apiUrl}modules?language=hindi,english`);
+  }
 }

@@ -17,14 +17,24 @@ export class DashboardComponent implements OnInit {
     artists: [] as any[],
     trending: { songs: [] as any[], albums: [] as any[] },
   };
+
+  engData= {
+    albums: [] as any[],
+    charts: [] as any[],
+    playlists: [] as any[],
+    artists: [] as any[],
+    trending: { songs: [] as any[], albums: [] as any[] },
+  };
   song: any;
 
   constructor(private eventsService: EventsService, private apiService: JiosavanService, private router: Router) { }
 
   ngOnInit(): void {
     this.apiService.getDashboardData().subscribe((res: any) => {
-      console.log('RES:::', res);
       this.data = res.data;
+    });
+    this.apiService.getDashboardEngSong().subscribe((res: any) => {
+      this.engData = res.data;
     });
   }
 
@@ -50,5 +60,20 @@ export class DashboardComponent implements OnInit {
     }
 
   }
+  navigateToArtist(artistId: string) {  
+    this.router.navigate(['/artist', artistId]);
+  }
 
+  getSongDetails(song_id: string) {
+    this.apiService.getArtistData(song_id).subscribe((res: any) => {
+      if (res.data.length > 0) {
+        this.song = res.data[0].downloadUrl[4];
+        console.log('Current song:', this.song); // Log current song details
+      } else {
+        console.error('No song data found for ID:', song_id);
+      }
+    }, error => {
+      console.error('[Song API Error] =>', error);
+    });
+  }
 }
