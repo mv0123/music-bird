@@ -68,7 +68,7 @@ export class DashboardComponent implements OnInit {
     this.apiService.getArtistData(song_id).subscribe((res: any) => {
       if (res.data.length > 0) {
         this.song = res.data[0].downloadUrl[4];
-        console.log('Current song:', this.song); // Log current song details
+        console.log('Current song:', this.song); 
       } else {
         console.error('No song data found for ID:', song_id);
       }

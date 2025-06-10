@@ -29,11 +29,15 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activeLink = this.router.url; 
+    this.activeLink = this.router.url;
     this.isHomePage = this.router.url === '/';
   }
 
   setActiveLink(link: string): void {
     this.activeLink = link;
+  }
+
+  onLinkClick(link: string): void {
+    this.router.navigate([link]);
   }
 }

@@ -1,15 +1,15 @@
 <main>
-  <!-- <app-navbar class="sticky-top"></app-navbar> -->
+  <app-navbar class="sticky-top"></app-navbar>
   <section class="d-flex calculated-height">
-    <app-sidebar></app-sidebar>
+    <app-sidebar (linkClick)="onLinkClick($event)"></app-sidebar>
     <div class="router-cnt padding">
-      <nav mat-tab-nav-bar *ngIf="!isHomePage">
+      <nav mat-tab-nav-bar *ngIf="!isHomePage" class="tab-nav">
         <span *ngFor="let link of links">
           <a mat-tab-link
              [routerLink]="link.link"
              (click)="setActiveLink(link.link)"
-             [active]="activeLink === link.link"> 
-             {{link.label}} 
+             [active]="activeLink === link.link">
+            {{ link.label }}
           </a>
         </span>
       </nav>

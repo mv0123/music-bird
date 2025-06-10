@@ -1,12 +1,64 @@
-.router-cnt{
-    flex: 1;
-    // background-color: #f2f2f2;
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    margin-left: 170px;
-    padding: 30px;
+:host {
+  display: block;
 }
 
-.calcuated-height{
-    height: calc(100vh - 121px);
+main {
+  background-color: #f1f3f5;
+  min-height: 100vh;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.tab-nav {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+::ng-deep .mat-tab-link {
+  color: #343a40;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 12px 20px;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+::ng-deep .mat-tab-link:hover {
+  color: #007bff;
+  background: rgba(0, 123, 255, 0.1);
+}
+
+::ng-deep .mat-tab-link-active {
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
+}
+
+@media (max-width: 768px) {
+  .router-cnt {
+    margin-left: 0;
+    padding: 15px;
+  }
+
+  .calculated-height {
+    flex-direction: column;
+  }
+
+  ::ng-deep .mat-tab-link {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .router-cnt {
+    padding: 10px;
+  }
+
+  ::ng-deep .mat-tab-link {
+    font-size: 0.85rem;
+    padding: 8px 10px;
+  }
 }

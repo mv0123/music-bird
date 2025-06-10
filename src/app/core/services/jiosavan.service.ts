@@ -36,6 +36,6 @@ export class JiosavanService {
   }
 
   getDashboardEngSong(): Observable<any> {
-    return this.http.get(`${this.apiUrl}modules?language=hindi,english`);
+    return this.http.get(`${this.apiUrl}modules?language=hindi`);
   }
 }

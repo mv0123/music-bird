@@ -1,95 +1,81 @@
 <div class="main">
-  <h2>Trending Songs </h2>
+  <h2>Trending Songs</h2>
   <div class="card-cnt">
     <div *ngFor="let song of data.trending.songs" class="card" (click)="playSong(song)">
-      <img [src]="song.image[1].link">
-      <p>{{ song.name }}</p>
-      <h4>{{ song.type }} #{{song.language}}</h4>
-
+      <div class="card-image">
+        <img [src]="song.image[1].link" alt="{{ song.name }}" loading="lazy">
+        <div class="play-overlay">
+          <i class="fas fa-play"></i>
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="card-title">{{ song.name }}</p>
+        <h4 class="card-subtitle">{{ song.type }} #{{ song.language }}</h4>
+      </div>
     </div>
   </div>
 
-  <h2>Trending Album</h2>
+  <h2>Trending Albums</h2>
   <div class="card-cnt">
     <div *ngFor="let album of data.trending.albums" class="card" (click)="dynamicNavigation(album)">
-      <img [src]="album.image[1].link">
-      <p>{{ album.name }}</p>
-      <h4>{{ album.type }} #{{album.language}}</h4>
+      <div class="card-image">
+        <img [src]="album.image[1].link" alt="{{ album.name }}" loading="lazy">
+        <div class="play-overlay">
+          <i class="fas fa-play"></i>
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="card-title">{{ album.name }}</p>
+        <h4 class="card-subtitle">{{ album.type }} #{{ album.language }}</h4>
+      </div>
     </div>
   </div>
 
   <h2>New Releases</h2>
   <div class="card-cnt">
     <div *ngFor="let album of data.albums" class="card" (click)="dynamicNavigation(album)">
-      <img [src]="album.image[1].link">
-      <p>{{ album.name }}</p>
-      <h4>{{ album.type }} #{{album.language}}</h4>
+      <div class="card-image">
+        <img [src]="album.image[1].link" alt="{{ album.name }}" loading="lazy">
+        <div class="play-overlay">
+          <i class="fas fa-play"></i>
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="card-title">{{ album.name }}</p>
+        <h4 class="card-subtitle">{{ album.type }} #{{ album.language }}</h4>
+      </div>
     </div>
   </div>
 
   <h2>Top Charts</h2>
   <div class="card-cnt">
     <div *ngFor="let chart of data.charts" class="card" (click)="navigateToPlaylist(chart.id)">
-      <img [src]="chart.image[0].link" style="width: 150px;">
-      <p>{{ chart.title }}</p>
-      <h4> {{ chart.type }} #{{chart.language}}</h4>
+      <div class="card-image">
+        <img [src]="chart.image[0].link" alt="{{ chart.title }}" loading="lazy">
+        <div class="play-overlay">
+          <i class="fas fa-play"></i>
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="card-title">{{ chart.title }}</p>
+        <h4 class="card-subtitle">{{ chart.type }} #{{ chart.language }}</h4>
+      </div>
     </div>
   </div>
 
   <h2>Top Playlists</h2>
   <div class="card-cnt">
     <div *ngFor="let playlist of data.playlists" class="card" (click)="navigateToPlaylist(playlist.id)">
-      <img [src]="playlist.image[0].link" style="width: 150px;">
-      <p>{{ playlist.title }}</p>
-      <h4> {{ playlist.type }} #{{playlist.subtitle}}</h4>
+      <div class="card-image">
+        <img [src]="playlist.image[0].link" alt="{{ playlist.title }}" loading="lazy">
+        <div class="play-overlay">
+          <i class="fas fa-play"></i>
+        </div>
+      </div>
+      <div class="card-content">
+        <p class="card-title">{{ playlist.title }}</p>
+        <h4 class="card-subtitle">{{ playlist.type }} #{{ playlist.subtitle }}</h4>
+      </div>
     </div>
   </div>
-
-
-  <!-- <div class="main">
-    <h2>Trending ENglish Songs </h2>
-    <div class="card-cnt">
-      <div *ngFor="let song of engData.trending.songs" class="card" (click)="playSong(song)">
-        <img [src]="song.image[1].link">
-        <p>{{ song.name }}</p>
-        <h4>{{ song.type }} #{{song.language}}</h4>
-
-      </div>
-    </div>
-
-    <h2>Trending ENglish Album</h2>
-    <div class="card-cnt">
-      <div *ngFor="let album of engData.trending.albums" class="card" (click)="dynamicNavigation(album)">
-        <img [src]="album.image[1].link">
-        <p>{{ album.name }}</p>
-        <h4>{{ album.type }} #{{album.language}}</h4>
-      </div>
-    </div>
-
-    <h2>New ENglish Releases</h2>
-    <div class="card-cnt">
-      <div *ngFor="let album of data.albums" class="card" (click)="dynamicNavigation(album)">
-        <img [src]="album.image[1].link">
-        <p>{{ album.name }}</p>
-        <h4>{{ album.type }} #{{album.language}}</h4>
-      </div>
-    </div>
-
-    <h2>Top ENglish Charts</h2>
-    <div class="card-cnt">
-      <div *ngFor="let chart of engData.charts" class="card" (click)="navigateToPlaylist(chart.id)">
-        <img [src]="chart.image[0].link" style="width: 150px;">
-        <p>{{ chart.title }}</p>
-        <h4> {{ chart.type }} #{{chart.language}}</h4>
-      </div>
-    </div>
-
-    <h2>ENglish Top Playlists</h2>
-    <div class="card-cnt">
-      <div *ngFor="let playlist of engData.playlists" class="card" (click)="navigateToPlaylist(playlist.id)">
-        <img [src]="playlist.image[0].link" style="width: 150px;">
-        <p>{{ playlist.title }}</p>
-        <h4> {{ playlist.type }} #{{playlist.subtitle}}</h4>
-      </div>
-    </div>
-  </div> -->
+</div>
